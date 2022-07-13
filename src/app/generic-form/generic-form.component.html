@@ -1,0 +1,12 @@
+<form *ngIf="LoadingDone" [dir]=properties.direction [ngStyle]="properties.formStyle" class="generic-form"
+    [formGroup]="formGroup" (ngSubmit)=Submit()>
+    <h1 [ngStyle]="properties.headerStyle" [ngClass]="properties.headerClass">{{properties.header}}</h1>
+    <div class="generic-form-input" *ngFor="let field of fields">
+        <input [id]=field [ngStyle]="properties.inputStyle" [ngClass]="properties.inputClass" formControlName={{field}}
+            placeholder={{field}} type={{getInputType(field)}}>
+    </div>
+    <div>
+        <button type="submit" [disabled]=!formGroup.valid [ngStyle]="properties.buttonStyle"
+            [ngClass]="properties.buttonClass">{{properties.buttonText}}</button>
+    </div>
+</form>

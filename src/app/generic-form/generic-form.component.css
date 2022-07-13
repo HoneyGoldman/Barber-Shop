@@ -1,0 +1,18 @@
+.generic-form-input{
+    margin: 5px 5px 5px 5px;
+    /* box-shadow: 0px 1px 1px 0px; */
+    width: 100%;
+}
+
+.generic-form{
+    width: fit-content;
+    padding: auto;
+    margin: auto;
+}
+
+.generic-form-button{
+    width: fit-content;
+    padding: auto;
+    margin: auto;
+    margin-top: 10px;
+}
