@@ -1,10 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Injectable, OnDestroy, OnInit } from '@angular/core';
 import { map, share, Subscription, timer } from 'rxjs';
 
 @Component({
   selector: 'app-clock',
   templateUrl: './clock.component.html',
   styleUrls: ['./clock.component.css']
+})
+@Injectable({
+  providedIn: 'root'
 })
 export class ClockComponent implements OnInit ,OnDestroy{
   day1:string="יום א'";
@@ -28,7 +31,7 @@ export class ClockComponent implements OnInit ,OnDestroy{
     let obj:any=this;
     if(obj[dynamicDay]!==undefined){
     this.dayText=obj[dynamicDay];
-    console.log("clock component "+this.dayText)
+    // console.log("clock component "+this.dayText)
     this.intervalId = setInterval(() => {
       this.time = new Date();
     }, 1000);
