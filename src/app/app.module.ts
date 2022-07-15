@@ -16,6 +16,7 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { LoginFormV2Component } from './login-form-v2/login-form-v2.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { ClockComponent } from './clock/clock.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ClockComponent } from './clock/clock.component';
     AddCustomerComponent,
     LoginFormV2Component,
     NavigationBarComponent,
-    ClockComponent
+    ClockComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
