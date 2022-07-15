@@ -29,7 +29,7 @@ export class LoginFormV2Component implements OnInit, AfterViewInit {
       y.style.backgroundImage = 'url(../assets/lockBlack.png)'
       y.style.backgroundSize = '15px'
       y.style.backgroundRepeat = 'no-repeat'
-      y.style.backgroundPosition = 'right 10px top 8px';
+      y.style.backgroundPosition = 'right 10px top 4px';
       y.style.paddingRight = '30px'
       y.style.lineHeight = '80%'
     }
