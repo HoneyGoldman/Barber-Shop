@@ -10,28 +10,28 @@ import { DataServiceComponent } from '../data-service/data-service.component';
   templateUrl: './login-form-v2.component.html',
   styleUrls: ['./login-form-v2.component.css']
 })
-export class LoginFormV2Component implements OnInit ,AfterViewInit {
-  properties: GenericFormProperties = new GenericFormProperties(this.router, this.dialog,this.dataService);
-  constructor(private router: Router, private dialog: MatDialogModule,public dataService:DataServiceComponent) { }
+export class LoginFormV2Component implements OnInit, AfterViewInit {
+  properties: GenericFormProperties = new GenericFormProperties(this.router, this.dialog, this.dataService);
+  constructor(private router: Router, private dialog: MatDialogModule, public dataService: DataServiceComponent) { }
 
   ngAfterViewInit(): void {
-    let x=document.getElementById('אימייל');
-    if(x!==null){
-    x.style.backgroundImage='url(../assets/personBlack.png)'
-    x.style.backgroundSize='15px'
-    x.style.backgroundRepeat='no-repeat'
-    x.style.backgroundPosition='right 10px top 8px';
-    x.style.paddingRight='30px'
-    x.style.lineHeight='80%'
+    let x = document.getElementById('אימייל');
+    if (x !== null) {
+      x.style.backgroundImage = 'url(../assets/personBlack.png)'
+      x.style.backgroundSize = '15px'
+      x.style.backgroundRepeat = 'no-repeat'
+      x.style.backgroundPosition = 'right 10px top 8px';
+      x.style.paddingRight = '30px'
+      x.style.lineHeight = '80%'
     }
-    let y=document.getElementById('סיסמה');
-    if(y!==null){
-    y.style.backgroundImage='url(../assets/lockBlack.png)'
-    y.style.backgroundSize='15px'
-    y.style.backgroundRepeat='no-repeat'
-    y.style.backgroundPosition='right 10px top 8px';
-    y.style.paddingRight='30px'
-    y.style.lineHeight='80%'
+    let y = document.getElementById('סיסמה');
+    if (y !== null) {
+      y.style.backgroundImage = 'url(../assets/lockBlack.png)'
+      y.style.backgroundSize = '15px'
+      y.style.backgroundRepeat = 'no-repeat'
+      y.style.backgroundPosition = 'right 10px top 8px';
+      y.style.paddingRight = '30px'
+      y.style.lineHeight = '80%'
     }
   }
 
@@ -56,25 +56,28 @@ export class LoginFormV2Component implements OnInit ,AfterViewInit {
     this.properties.formStyle = {
       'border-radius': '25px',
       'padding': '10px',
-      'width':'60%',
+      'width': '60%',
     }
     this.properties.inputStyle = {}
     this.properties.buttonClass = ['button', 'buttonV2']
     this.properties.inputClass = ['form-group form-control inputV2']
     this.properties.headerClass = ["h1V2"]
-    this.properties.submitAction = function execute(data:any) {
+    this.properties.submitAction = function execute(data: any) {
       console.log('injection from login')
-      let admin:Admin=new Admin();;
-      this.dataService.login(data['אימייל'],data['סיסמה']).subscribe(result=>{
+      let admin: Admin = new Admin();;
+      this.dataService.login(data['אימייל'], data['סיסמה']).subscribe(result => {
         console.log(JSON.stringify(result));
-        if(result!==null){
+        if (result !== null) {
+          this.dataService.storeAdmin(result);
+          this.dataService.storeSiteId(result.siteId!);
           this.router.navigateByUrl('/Home')
         }
-        else{
+        else {
           //open pop up error with MatDialog using generic dialog pop up
         }
       })
     }
-    }
+    this.dataService.storeAdmin(new Admin);
+  }
 
 }

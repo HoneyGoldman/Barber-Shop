@@ -27,9 +27,9 @@ export class GenericFormComponent implements OnInit {
 
     this.fields.forEach((x: string) => this.translatedFields.push(this.getFieldTranslation(x)!))
     this.fields = this.translatedFields;
-    console.log(this.fields + " " + this.translatedFields)
+    // console.log(this.fields + " " + this.translatedFields)
     this.fields.forEach((field: string) => {
-      console.log(field)
+      // console.log(field)
       this.formGroup.addControl(field, this.formBuilder.control('', Validators.required));
     })
     this.direction = '{dir=' + this.properties.direction + '}';

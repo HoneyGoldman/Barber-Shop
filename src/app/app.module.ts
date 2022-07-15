@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { LoginFormV2Component } from './login-form-v2/login-form-v2.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { ClockComponent } from './clock/clock.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { LoginFormV2Component } from './login-form-v2/login-form-v2.component';
     LoginHebComponentComponent,
     HomeComponent,
     AddCustomerComponent,
-    LoginFormV2Component
+    LoginFormV2Component,
+    NavigationBarComponent,
+    ClockComponent
   ],
   imports: [
     BrowserModule,

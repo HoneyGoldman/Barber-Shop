@@ -4,7 +4,7 @@ export class Admin {
     email?: string;
     password?: string;
     familyName?: number;
-
+    siteId?:string;
     constructor(){
         
     }

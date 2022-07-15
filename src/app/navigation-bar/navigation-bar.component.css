@@ -1,0 +1,42 @@
+h1 {
+    text-align: center;
+    margin: auto;
+}
+
+ul{
+    width: -webkit-fill-available;
+}
+
+.imgDiv {
+    width: 30%;
+    padding-right: 5%;
+}
+
+.config h1{
+    float: left;
+    padding-left: 5%;
+}
+
+@media screen and (max-width: 992px) {
+    .imgDiv {
+        width: 100%;
+        padding: 9%;
+    }
+    ul{
+        width: max-content;
+        display: contents;
+    }
+    ul li{
+        width: max-content;
+    }
+
+    .config{
+        display: none;
+    }
+
+}
+
+.nav-item {
+    width: 45%;
+    margin: auto;
+}
