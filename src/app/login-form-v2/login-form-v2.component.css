@@ -1,0 +1,28 @@
+.loginFirstContainer{
+    height: initial;width: 60%;
+    background-image:url(/assets/background2.png);
+    background-size:     cover;                     
+    background-repeat:   no-repeat;
+    background-position: center center;margin-right: -3%;
+}
+
+.loginSecondContainer{
+    width: 30%;
+    float: right;
+    padding: 7% 0;
+    border-radius: 33px;background: white;
+}
+
+
+@media screen and (max-width: 992px) {
+    .pictureArea{
+        display: none;
+    }
+    .loginFirstContainer{
+        display: none;
+    }
+    .loginSecondContainer{
+        width: 100%;
+        height: max-content;
+    }
+}
