@@ -10,10 +10,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr  *ngFor="let customer of day?.customers;index as i">
-                <td>{{getSource(customer.source!)}}</td>
-                <td>{{getTime(i)}}</td>
-                <td>{{customer.name}}</td>
+            <tr  *ngFor="let appointment of appointments;index as i">
+                <td>{{getSource(appointment.customer?.source!)}}</td>
+                <td>{{appointment.startTime}}</td>
+                <td>{{appointment.customer?.name!}}</td>
                 <td><span>החלף</span><span>עיכוב</span><span>ביטול</span></td>
             </tr>
         </tbody>

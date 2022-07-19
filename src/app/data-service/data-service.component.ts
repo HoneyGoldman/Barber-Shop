@@ -3,6 +3,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Admin } from 'src/Model/Admin';
+import { Appointment } from 'src/Model/Appointment';
 import { Day } from 'src/Model/Day';
 
 @Component({
@@ -29,13 +30,13 @@ export class DataServiceComponent implements OnInit {
     return this.http.get<Admin>(url);
   }
 
-  getDay(day:number,month:number,year:number):Observable<Day>{
+  getDay(day:number,month:number,year:number):Observable<Appointment[]>{
     console.log("Data service: get Day "+day+" "+month+" "+year+" ")
     const url=this.baseURL+'/Calendar/getDay?siteId='+this.siteId+'&day='+day+'&month='+(month+1)+'&year='+year;
     if(this.siteId===null || this,this.siteId===undefined){
       console.log("Data service: No SITE ID !!")
     }
-    return this.http.get<Day>(url);
+    return this.http.get<Appointment[]>(url);
   }
   storeSiteId(siteId:string){
     this.siteId=siteId;

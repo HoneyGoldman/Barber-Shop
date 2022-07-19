@@ -1,6 +1,6 @@
 import { PropertyRead } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormBuilder, FormControl, UntypedFormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { GenericFormProperties } from 'src/Model/GenericFormProperties';
 import { __classPrivateFieldGet } from 'tslib';
 
@@ -12,12 +12,12 @@ import { __classPrivateFieldGet } from 'tslib';
 export class GenericFormComponent implements OnInit {
   @Input()
   properties!: GenericFormProperties;
-  formGroup = new FormGroup({});
+  formGroup = new UntypedFormGroup({});
   fields: any = [];
   translatedFields: any = [];
   direction: string = '';
   LoadingDone = false;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.fields = Object.keys(this.properties.object);
