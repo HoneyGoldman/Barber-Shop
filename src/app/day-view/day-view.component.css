@@ -1,0 +1,27 @@
+.th{
+    display: flex;
+}
+
+table{
+    width: -webkit-fill-available;
+    margin-bottom: 3%;
+}
+
+tr{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+td{
+    height: 50px;
+}
+
+.statistics{
+    font-weight: bold;
+    font-size: 17px;
+    margin-right: 20%;
+}
+
+span{
+    margin: 3%;
+}

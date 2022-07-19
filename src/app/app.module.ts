@@ -17,6 +17,10 @@ import { LoginFormV2Component } from './login-form-v2/login-form-v2.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { ClockComponent } from './clock/clock.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { DayViewComponent } from './day-view/day-view.component';
 
 
 @NgModule({
@@ -32,16 +36,22 @@ import { CalendarComponent } from './calendar/calendar.component';
     LoginFormV2Component,
     NavigationBarComponent,
     ClockComponent,
-    CalendarComponent
+    CalendarComponent,
+    DayViewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'he-GB'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

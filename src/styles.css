@@ -53,7 +53,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.inputV2{
+.inputV2 {
   padding-right: 30px;
   line-height: 80%;
   border: none;
@@ -76,8 +76,22 @@ body {
   box-shadow: black 0px 0px 15px 0px;
 }
 
-.h1V2{
+.h1V2 {
   font-size: 15px;
-    margin: 0;
-    color: rgb(121, 118, 118);
+  margin: 0;
+  color: rgb(121, 118, 118);
+}
+
+.container {
+  display: flex;
+}
+
+.calendarContainer {
+  width: 50%;
+  height: max-content;
+}
+
+.quickSummary {
+  width: 40%;
+  height: max-content;
 }

@@ -1,0 +1,24 @@
+<h1 style="text-align: center;">{{dateSTR}}</h1>
+<div  dir="rtl" class="customerArea">
+    <table>
+        <thead>
+            <tr>
+                <th>הזנה</th>
+                <th>שעה</th>
+                <th>פרטים</th>
+                <th>פעולות</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let customer of day?.customers;index as i">
+                <td>{{getSource(customer.source!)}}</td>
+                <td>{{getTime(i)}}</td>
+                <td>{{customer.name}}</td>
+                <td><span>החלף</span><span>עיכוב</span><span>ביטול</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <span class="statistics">{{getCustomersStatistics()}}</span>
+    </div>
+</div>
