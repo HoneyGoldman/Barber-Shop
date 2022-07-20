@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Appointment } from 'src/Model/Appointment';
 import { Day } from 'src/Model/Day';
 import { DataServiceComponent } from '../data-service/data-service.component';
+import { GenericPopUpComponent } from '../generic-pop-up/generic-pop-up.component';
+import { SwapAppointmentComponent } from '../swap-appointment/swap-appointment.component';
 
 @Component({
   selector: 'app-day-view',
@@ -15,7 +18,16 @@ export class DayViewComponent implements OnInit {
   appointments?: Appointment[];
   localDate?: Date;
   dateSTR: string = '';
-  constructor(private dataService: DataServiceComponent) { }
+  day1:string="יום א'";
+  day2:string="יום ב'";
+  day3:string="יום ג'";
+  day4:string="יום ד'";
+  day5:string="יום ה'";
+  day6:string="יום ו'";
+  day7:string="שבת";
+  dayText=''
+  confirmDelete:boolean=false;
+  constructor(private dataService: DataServiceComponent,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     if (this.date !== undefined) {
@@ -38,6 +50,9 @@ export class DayViewComponent implements OnInit {
 
   setDateSTR(date: Date) {
     this.dateSTR = this.localDate?.getUTCDate()! + "." + this.localDate?.getMonth()!
+    let dynamicDay:string='day'+(1+this.date!.getDay());
+    let obj:any=this;
+    this.dayText=obj[dynamicDay];
   }
 
   getSource(source: string) {
@@ -60,12 +75,60 @@ export class DayViewComponent implements OnInit {
     if(this.appointments?.length===0){ return ''}
     return (this.appointments?.length! > 1) ? this.appointments?.length + ' לקוחות' : 'לקוח אחד';
   }
-  
+
   sortAppointmentsByTime() {
     this.appointments?.sort(function (a, b) {
       let A = Number(a.startTime?.slice(0, 2)) * 60 + Number(a.startTime?.slice(3, 5))
       let B = Number(b.startTime?.slice(0, 2)) * 60 + Number(b.startTime?.slice(3, 5))
       return A > B ? 1 : A < B ? -1 : 0;
     })
+  }
+
+  nextDay(){
+    console.log("day1 is now "+this.date)
+    this.date?.setDate(this.date?.getDate()+1);
+    this.ngOnInit()
+    console.log("day is now "+this.date)
+  }
+  previusDay(){
+    console.log("day1 is now "+this.date)
+    this.date?.setDate(this.date?.getDate()-1);
+    this.ngOnInit()
+    console.log("day is now "+this.date)
+  }
+
+  openDeleteDialog(appointment:Appointment): void {
+    const dialogRef = this.dialog.open(GenericPopUpComponent, {
+      width: '250px',
+      data: {text:'האם ברצונך לבטל את התור?',header:'ביטול תור',noText:'לא',yesText:'בטל'},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed '+result);
+      this.confirmDelete = result;
+    });
+  }
+
+  openDelayDialog(appointment:Appointment): void {
+    const dialogRef = this.dialog.open(GenericPopUpComponent, {
+      width: '250px',
+      data: {text:'האם ברצונך לדחות את התור?',header:'דחה תור',noText:'לא',yesText:'בטל'},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed '+result);
+      this.confirmDelete = result;
+    });
+  }
+  openSwapDialog(appointment:Appointment): void {
+    const dialogRef = this.dialog.open(SwapAppointmentComponent, {
+      width: '250px',
+      data: {text:'האם ברצונך לדחות את התור?',header:'דחה תור',noText:'לא',yesText:'בטל'},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed '+result);
+      this.confirmDelete = result;
+    });
   }
 }

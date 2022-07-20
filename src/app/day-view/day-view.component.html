@@ -1,6 +1,19 @@
-<h1 style="text-align: center;">{{dateSTR}}</h1>
-<div  dir="rtl" class="customerArea">
-    <table>
+<h1 style="text-align: center;font-family: American typewriter;">{{dateSTR}}</h1>
+<ul class="ul">
+    <li class="li">
+        <button (click)="nextDay()">
+            <--</button>
+    </li>
+    <li class="li">
+        <h1 dir="rtl" style="text-align: center;">{{dayText}}</h1>
+    </li>
+    <li class="li">
+        <button (click)="previusDay()">--></button>
+    </li>
+</ul>
+
+<div dir="rtl" class="customerArea">
+    <table *ngIf="appointments">
         <thead>
             <tr>
                 <th>הזנה</th>
@@ -10,11 +23,21 @@
             </tr>
         </thead>
         <tbody>
-            <tr  *ngFor="let appointment of appointments;index as i">
+            <div *ngIf="appointments!.length===0">
+                <h1 dir="rtl" style="text-align: center;">לא נקבעו תורים</h1>
+            </div>
+            <tr *ngFor="let appointment of appointments;index as i">
                 <td>{{getSource(appointment.customer?.source!)}}</td>
-                <td>{{appointment.startTime}}</td>
-                <td>{{appointment.customer?.name!}}</td>
-                <td><span>החלף</span><span>עיכוב</span><span>ביטול</span></td>
+                <td style="font-family: American typewriter;">{{appointment.startTime}}</td>
+                <td>
+                    <p>{{appointment.customer?.name!}}</p>
+                    <p style="font-family: American typewriter;">{{appointment.customer?.phoneNumber!}}</p>
+                </td>
+                <td dir="rtl">
+                    <span style="cursor:pointer" (click)="openSwapDialog(appointment)">החלף</span>
+                    <span style="cursor:pointer" (click)="openDelayDialog(appointment)">עיכוב</span>
+                    <span style="cursor:pointer" (click)="openDeleteDialog(appointment)">ביטול</span>
+                </td>
             </tr>
         </tbody>
     </table>
