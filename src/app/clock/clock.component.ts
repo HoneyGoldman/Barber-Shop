@@ -1,4 +1,4 @@
-import { Component, Injectable, OnDestroy, OnInit } from '@angular/core';
+import { Component, Injectable, Input, OnDestroy, OnInit } from '@angular/core';
 import { map, share, Subscription, timer } from 'rxjs';
 
 @Component({
@@ -10,6 +10,9 @@ import { map, share, Subscription, timer } from 'rxjs';
   providedIn: 'root'
 })
 export class ClockComponent implements OnInit ,OnDestroy{
+  @Input()
+  timeView:boolean=true;
+
   day1:string="יום א'";
   day2:string="יום ב'";
   day3:string="יום ג'";
