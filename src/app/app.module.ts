@@ -21,7 +21,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { DayViewComponent } from './day-view/day-view.component';
-
+import { GenericPopUpComponent } from './generic-pop-up/generic-pop-up.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { SwapAppointmentComponent } from './swap-appointment/swap-appointment.component'
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { DayViewComponent } from './day-view/day-view.component';
     NavigationBarComponent,
     ClockComponent,
     CalendarComponent,
-    DayViewComponent
+    DayViewComponent,
+    GenericPopUpComponent,
+    SwapAppointmentComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,8 @@ import { DayViewComponent } from './day-view/day-view.component';
     HttpClientModule,
     MatCardModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'he-GB'},
