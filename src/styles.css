@@ -1,12 +1,21 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
+.grey {
+  color: #9A9A9A;
+}
+
+.blue {
+  color: #3A44BE;
+}
+
 .h1 {
   text-align: center;
 }
 
 .button {
   border: none;
-  color: #008CBA;
+  /* color: #008CBA; */
+  color: #3A44BE;
   /* padding: 16px 23px; */
   text-align: center;
   text-decoration: none;
@@ -94,4 +103,22 @@ body {
 .quickSummary {
   width: 40%;
   height: max-content;
+}
+
+@media screen and (max-width: 992px) {
+  .quickSummary {
+    display: none;
+  }
+
+  .calendarContainer {
+    width: 100%;
+  }
+}
+
+.dailogButton {
+  margin: auto;
+  border: 1px solid;
+  border-radius: 8px;
+  width: 43%;
+  box-shadow: 0 0px 3px 0;
 }
