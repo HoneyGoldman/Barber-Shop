@@ -23,15 +23,15 @@
             </tr>
         </thead>
         <tbody>
-            <div *ngIf="appointments!.length===0">
+            <div *ngIf="realAppointments!.length===0">
                 <h1 dir="rtl" style="text-align: center;">לא נקבעו תורים</h1>
             </div>
             <tr *ngFor="let appointment of appointments;index as i">
                 <td>{{getSource(appointment.customer?.source!)}}</td>
                 <td style="font-family: American typewriter;">{{appointment.startTime}}</td>
                 <td>
-                    <p>{{appointment.customer?.name!}}</p>
-                    <p style="font-family: American typewriter;">{{appointment.customer?.phoneNumber!}}</p>
+                    <p>{{getNameText(appointment.customer?.name!)}}</p>
+                    <p *ngIf="getStatus(appointment.customer?.phoneNumber!)" style="font-family: American typewriter;">{{appointment.customer?.phoneNumber!}}</p>
                 </td>
                 <td dir="rtl">
                     <span style="cursor:pointer" (click)="openSwapDialog(appointment)">החלף</span>

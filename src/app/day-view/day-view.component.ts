@@ -16,6 +16,7 @@ export class DayViewComponent implements OnInit {
   date?: Date;
 
   appointments?: Appointment[];
+  realAppointments?:Appointment[];
   localDate?: Date;
   dateSTR: string = '';
   day1:string="יום א'";
@@ -40,11 +41,17 @@ export class DayViewComponent implements OnInit {
     // console.log(this.localDate?.getUTCDate()!+" "+this.localDate?.getMonth()!+" "+this.localDate?.getFullYear()!)
     this.dataService.getDay(this.localDate?.getUTCDate()!, this.localDate?.getMonth()!, this.localDate?.getFullYear()!).subscribe(result => {
       this.appointments = result;
-      this.sortAppointmentsByTime();
-      console.log(JSON.stringify(this.appointments))
+      // this.sortAppointmentsByTime();
+      // console.log(JSON.stringify(this.appointments))
     })
     this.setDateSTR(this.date!);
+    this.dataService.getRealAppointmentsDay(this.localDate?.getUTCDate()!, this.localDate?.getMonth()!, this.localDate?.getFullYear()!).subscribe(result => {
+      this.realAppointments = result;
+      // this.sortAppointmentsByTime();
+      console.log(JSON.stringify(this.appointments))
+    })
     
+
   }
 
 
@@ -72,8 +79,8 @@ export class DayViewComponent implements OnInit {
   }
 
   getCustomersStatistics() {
-    if(this.appointments?.length===0){ return ''}
-    return (this.appointments?.length! > 1) ? this.appointments?.length + ' לקוחות' : 'לקוח אחד';
+    if(this.realAppointments?.length===0){ return ''}
+    return (this.realAppointments?.length! > 1) ? this.realAppointments?.length + ' לקוחות' : 'לקוח אחד';
   }
 
   sortAppointmentsByTime() {
@@ -130,5 +137,15 @@ export class DayViewComponent implements OnInit {
       console.log('The dialog was closed '+result);
       this.confirmDelete = result;
     });
+  }
+
+  getNameText(name:string){
+    if(name==='dummy') return 'תור פנוי'
+    return name;
+  }
+
+  getStatus(name:string){
+    if(name!=='dummy') return true
+    return false;
   }
 }
