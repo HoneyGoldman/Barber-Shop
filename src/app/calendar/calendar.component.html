@@ -2,7 +2,7 @@
 <div>
     <div *ngIf="!isRealoading && viewState==month" class="calendar">
         <mat-card dir="rtl" class="demo-inline-calendar-card">
-            <mat-calendar [dateClass]="dateClass()" (click)="view(day)" [(selected)]="selected"></mat-calendar>
+            <mat-calendar [dateClass]="dateClass()" (selectedChange)="view(day)" [(selected)]="selected"></mat-calendar>
         </mat-card>
         <p>Selected date: {{selected}}</p>
     </div>
