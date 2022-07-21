@@ -1,16 +1,15 @@
-import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatCalendar, MatCalendarCellClassFunction, MatCalendarCellCssClasses, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { DataServiceComponent } from '../data-service/data-service.component';
-import { Observable } from 'rxjs';
 import { Appointment } from 'src/Model/Appointment';
-import { waitForAsync } from '@angular/core/testing';
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent implements OnInit, AfterViewChecked{
   text: string = 'text header';
   selected!: Date | null;
   week = 'week'
@@ -21,10 +20,44 @@ export class CalendarComponent implements OnInit {
   isRealoading: boolean = true;
 
   constructor(private data: DataServiceComponent) { }
+  ngAfterViewChecked(): void {
+
+    console.log("started appending")
+    // document.addEventListener("DOMContentLoaded", function () {
+    var oneDot = document.getElementsByClassName('oneDot');
+    if (oneDot !== undefined) {
+      for (var i = 0; i < oneDot.length; i++) {
+        var div = document.createElement('div');
+        div.style.setProperty('font-size', '40px');
+        div.textContent = ".";
+        oneDot[i].appendChild(div);
+      }
+    }
+
+    var twoDot = document.getElementsByClassName('towDot');
+    if (twoDot !== undefined) {
+      for (var i = 0; i < twoDot.length; i++) {
+        var div = document.createElement('div');
+        div.style.setProperty('font-size', '40px');
+        div.textContent = ". .";
+        twoDot[i].appendChild(div);
+      }
+    }
+
+    var threeoDot = document.getElementsByClassName('threeDot');
+    if (threeoDot !== undefined) {
+      for (var i = 0; i < threeoDot.length; i++) {
+        var div = document.createElement('div');
+        div.style.setProperty('font-size', '40px');
+        div.textContent = ". . .";
+        threeoDot[i].appendChild(div);
+      }
+    }
+  }
 
 
   ngOnInit(): void {
-    this.selected=new Date();
+    this.selected = new Date();
     this.data.getAllmonthAppointment(this.selected!.getMonth(), this.selected!.getFullYear()).subscribe(appointments => {
       appointments.forEach(appointment => {
         if (this.days.get(String(appointment.date)) === undefined) {
@@ -34,9 +67,9 @@ export class CalendarComponent implements OnInit {
           this.days.get(String(appointment.date))?.push(appointment);
         }
       })
-      // console.log(this.days)
+      console.log(this.days)
       this.isRealoading = false;
-
+      // this.putStyleToclasses();
     }
     )
   }
@@ -61,22 +94,22 @@ export class CalendarComponent implements OnInit {
   getClassForDate(date: Date): string {
     let dateFormat: string = new Date(date).toISOString().split('T')[0]
     let yyyy = dateFormat.slice(0, 4);
-    let mm = dateFormat.slice(5, 7);
+    let mm = String(date.getMonth()+1);
+    if(Number(mm)<10){mm='0'+mm}
     let dd = dateFormat.slice(2, 4);
     let newFormat = dd + '-' + mm + '-' + yyyy;
-    // console.log("date format " + newFormat)
     return this.getClassBySize(this.days.get(newFormat)?.length!);
   }
 
   getClassBySize(size: number) {
     console.log("size class function " + size)
-    if (size >= 0 && size <= 4) {
+    if (size > 0 && size < 4) {
       return 'oneDot'
     }
-    if (size >= 4 && size <= 6) {
+    if (size > 4 && size < 6) {
       return 'towDot'
     }
-    if (size >= 6 && size <= 10) {
+    if (size >= 6) {
       return 'threeDot'
     }
     else {
@@ -85,14 +118,28 @@ export class CalendarComponent implements OnInit {
   }
 
   putStyleToclasses() {
-    let detailsNews = document.querySelectorAll('div[class$="oneDot"]');
-    console.log("classes divs array " + JSON.stringify(detailsNews))
-    detailsNews.forEach(function (item) {
-      var div = document.createElement('div');
-      div.className = 'append_test';
-      div.textContent = "appended div to " + item.classList;
-      item.appendChild(div);
-    })
-  }
+    console.log("started appending")
+    document.addEventListener("DOMContentLoaded", function () {
+      var oneDot = document.getElementsByClassName('oneDot');
+      for (var i = 0; i < oneDot.length; i++) {
+        var div = document.createElement('div');
+        div.className = '';
+        div.textContent = ".";
+        oneDot[i].appendChild(div);
+      }
+    }
+    )
+    // let oneDot = document.getElementsByClassName('oneDot');
+    // var list = document.getElementsByClassName("oneDot");
+    // for (var i = 0; i < oneDot.length; i++) {
+    //   let div = document.createElement('div');
+    //   div.className = 'append_test';
+    //   div.textContent = "appended div to " + oneDot[i].classList;
+    //   oneDot[i].appendChild(div);
+    //   console.log(oneDot[i]);
+    // }
 
+    // console.log(JSON.stringify(oneDot));
+
+  }
 }

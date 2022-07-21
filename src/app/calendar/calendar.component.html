@@ -1,7 +1,7 @@
 <!-- <h1>{{text}}</h1> -->
 <div>
     <div *ngIf="!isRealoading && viewState==month" class="calendar">
-        <mat-card dir="rtl" class="demo-inline-calendar-card">
+        <mat-card *ngIf="!isRealoading" dir="rtl" class="demo-inline-calendar-card">
             <mat-calendar [dateClass]="dateClass()" (selectedChange)="view(day)" [(selected)]="selected"></mat-calendar>
         </mat-card>
         <!-- <p>Selected date: {{selected}}</p> -->
@@ -18,3 +18,15 @@
     </ul>
 
 </div>
+<!-- <script>
+    var oneDot = document.getElementsByClassName('oneDot');
+
+    for (var i = 0; i < oneDot.length; i++) {
+        var div = document.createElement('div');
+        div.className = 'oneDotElement';
+        div.style = 'font-size: 40px;'
+        div.textContent = ".";
+        oneDot[i].appendChild(div);
+    }
+    console.log("classes divs array " + JSON.stringify(oneDot))
+</script> -->
