@@ -4,7 +4,7 @@
         <mat-card dir="rtl" class="demo-inline-calendar-card">
             <mat-calendar [dateClass]="dateClass()" (selectedChange)="view(day)" [(selected)]="selected"></mat-calendar>
         </mat-card>
-        <p>Selected date: {{selected}}</p>
+        <!-- <p>Selected date: {{selected}}</p> -->
     </div>
     <div *ngIf="viewState==day">
         <app-day-view [date]=selected></app-day-view>
