@@ -46,3 +46,17 @@ ul li{
 
 }
 
+.oneDot{
+    color: brown;
+background-color: brown;
+}
+
+.towDot{
+    color: brown;
+    background-color: brown important!;
+}
+
+.threeDot{
+    color: brown;
+    background-color: brown;
+}

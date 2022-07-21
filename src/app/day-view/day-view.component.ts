@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Appointment } from 'src/Model/Appointment';
 import { Day } from 'src/Model/Day';
@@ -11,9 +11,12 @@ import { SwapAppointmentComponent } from '../swap-appointment/swap-appointment.c
   templateUrl: './day-view.component.html',
   styleUrls: ['./day-view.component.css']
 })
+@Injectable({
+  providedIn: 'root'
+})
 export class DayViewComponent implements OnInit {
   @Input()
-  date?: Date;
+  date!: Date | null;
 
   appointments?: Appointment[];
   realAppointments?:Appointment[];
@@ -32,7 +35,7 @@ export class DayViewComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.date !== undefined) {
-      this.localDate = this.dataService.convertUTCDateToLocalDate(this.date);
+      this.localDate = this.dataService.convertUTCDateToLocalDate(this.date!);
     }
     else {
       this.localDate = this.dataService.convertUTCDateToLocalDate(new Date());
@@ -48,9 +51,8 @@ export class DayViewComponent implements OnInit {
     this.dataService.getRealAppointmentsDay(this.localDate?.getUTCDate()!, this.localDate?.getMonth()!, this.localDate?.getFullYear()!).subscribe(result => {
       this.realAppointments = result;
       // this.sortAppointmentsByTime();
-      console.log(JSON.stringify(this.appointments))
+      // console.log(JSON.stringify(this.appointments))
     })
-    
 
   }
 

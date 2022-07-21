@@ -23,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            <div *ngIf="realAppointments!.length===0">
+            <div *ngIf="realAppointments && realAppointments!.length===0">
                 <h1 dir="rtl" style="text-align: center;">לא נקבעו תורים</h1>
             </div>
             <tr *ngFor="let appointment of appointments;index as i">
