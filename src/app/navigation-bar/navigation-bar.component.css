@@ -3,7 +3,7 @@ h1 {
     margin: auto;
 }
 
-ul{
+ul {
     width: -webkit-fill-available;
 }
 
@@ -12,15 +12,15 @@ ul{
     padding-right: 5%;
 }
 
-.config h1{
+.config h1 {
     float: left;
     padding-left: 5%;
 }
 
-nav{
+nav {
     border-bottom: 2px dashed black;
-margin-bottom: 3px;    
-max-height: 50px;
+    margin-bottom: 3px;
+    max-height: 50px;
 }
 
 @media screen and (max-width: 992px) {
@@ -28,20 +28,27 @@ max-height: 50px;
         width: 100%;
         padding: 9%;
     }
-    ul{
+
+    ul {
         width: max-content;
         display: contents;
     }
-    ul li{
+
+    ul li {
         width: max-content;
     }
 
-    .config{
+    .config {
         display: none;
     }
-    
-    nav{
+
+    nav {
         max-height: none;
+    }
+
+    .navigationBarSpecial {
+        position: initial !important;
+        z-index: 1;
     }
 
 }
@@ -49,4 +56,13 @@ max-height: 50px;
 .nav-item {
     width: 45%;
     margin: auto;
+}
+
+
+
+
+
+.navigationBarSpecial {
+    position: fixed;
+    z-index: 1;
 }
