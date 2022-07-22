@@ -2,10 +2,12 @@
     border: 1px solid black;
 }
 
-/* ::ng-deep .mat-calendar-body-cell-container{
-    border-color:black ;
-    border: 3px solid black;
-} */
+ ::ng-deep .mat-calendar-body-cell-container{
+    /* border-color:black ;
+    border: 3px solid black; */
+    padding: 20%;
+    font-family: American typewriter;
+} 
 
 .mat-calendar-body-today {
     color: red;
@@ -46,22 +48,11 @@ ul li {
 
 .contenContainer {}
 
-.oneDot {
-    color: brown;
-    background-color: brown;
-}
+
 
 .oneDotElement {
-    background-color: blue;
-    font-size: 40px;
+
 }
 
-.towDot {
-    color: brown;
-    background-color: brown important !;
-}
 
-.threeDot {
-    color: brown;
-    background-color: brown;
-}
+

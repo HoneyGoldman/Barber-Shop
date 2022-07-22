@@ -93,6 +93,7 @@ body {
 
 .container {
   display: flex;
+  height: -webkit-fill-available;
 }
 
 .calendarContainer {
@@ -121,4 +122,41 @@ body {
   border-radius: 8px;
   width: 43%;
   box-shadow: 0 0px 3px 0;
+}
+
+.oneDotClass {
+  padding-top: 85%;
+  font-size:40px;
+}
+.towDotClass {
+  padding-top: 85%;
+  font-size:40px;
+}
+
+.threeDotClass {
+  padding-top: 85%;
+  font-size:40px;
+}
+
+.defaultDotClass {
+  padding-top: 85%;
+  font-size:40px;
+}
+
+@media screen and (max-width: 992px) {
+  .oneDotClass {
+      padding-top: 10px;
+  }
+
+  .towDotClass {
+      padding-top: 10px;
+  }
+  
+  .threeDotClass {
+      padding-top: 10px;
+  }
+
+  .defaultDotClass {
+    padding-top: 10px;
+  }
 }
