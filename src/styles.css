@@ -126,21 +126,21 @@ body {
 
 .oneDotClass {
   padding-top: 10%;
-  font-size:50px;
+  font-size:45px;
 }
 .towDotClass {
   padding-top: 10%;
-  font-size:50px;
+  font-size:45px;
 }
 
 .threeDotClass {
   padding-top: 10%;
-  font-size:50px;
+  font-size:45px;
 }
 
 .defaultDotClass {
   padding-top: 10%;
-  font-size:50px;
+  font-size:45px;
 }
 
 @media screen and (max-width: 992px) {
