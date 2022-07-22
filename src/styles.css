@@ -125,38 +125,38 @@ body {
 }
 
 .oneDotClass {
-  padding-top: 85%;
-  font-size:40px;
+  padding-top: 10%;
+  font-size:50px;
 }
 .towDotClass {
-  padding-top: 85%;
-  font-size:40px;
+  padding-top: 10%;
+  font-size:50px;
 }
 
 .threeDotClass {
-  padding-top: 85%;
-  font-size:40px;
+  padding-top: 10%;
+  font-size:50px;
 }
 
 .defaultDotClass {
-  padding-top: 85%;
-  font-size:40px;
+  padding-top: 10%;
+  font-size:50px;
 }
 
 @media screen and (max-width: 992px) {
   .oneDotClass {
-      padding-top: 10px;
+      padding-top: 5%;
   }
 
   .towDotClass {
-      padding-top: 10px;
+    padding-top: 5%;
   }
   
   .threeDotClass {
-      padding-top: 10px;
+    padding-top: 5%;
   }
 
   .defaultDotClass {
-    padding-top: 10px;
+    padding-top: 5%;
   }
 }

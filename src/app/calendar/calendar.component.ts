@@ -41,7 +41,7 @@ export class CalendarComponent implements OnInit, AfterViewChecked {
           this.days.get(String(appointment.date))?.push(appointment);
         }
       })
-      console.log(this.days)
+      // console.log(this.days)
       this.isRealoading = false;
 
     }, err => { console.log(err) }
@@ -61,9 +61,9 @@ export class CalendarComponent implements OnInit, AfterViewChecked {
 
   dateClass() {
     return (matDate: Date): MatCalendarCellCssClasses => {
-      console.log("date from mat-calendar is " + matDate)
+      // console.log("date from mat-calendar is " + matDate)
       let newFormat = this.formatDate(matDate);
-      console.log("get class for date " + newFormat + " " + this.days.get(newFormat)?.length!)
+      // console.log("get class for date " + newFormat + " " + this.days.get(newFormat)?.length!)
       return this.getClassForDate(newFormat);
     }
   }
@@ -86,7 +86,7 @@ export class CalendarComponent implements OnInit, AfterViewChecked {
 
   getClassBySize(size: number) {
 
-    console.log("size class function " + size)
+    // console.log("size class function " + size)
     if (size > 0 && size < 3) {
       return 'oneDot'
     }
@@ -102,7 +102,7 @@ export class CalendarComponent implements OnInit, AfterViewChecked {
   }
 
   putDivToClasses() {
-      console.log("started")
+      // console.log("started")
       let paddingTop='5%'
       let fontSize='40px'
       var oneDot = document.getElementsByClassName('oneDot');

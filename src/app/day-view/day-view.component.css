@@ -7,7 +7,7 @@ table{
     margin-bottom: 3%;
 }
 
-tr{
+tbody >tr{
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
