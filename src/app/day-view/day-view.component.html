@@ -11,9 +11,11 @@
         <button (click)="previusDay()">--></button>
     </li>
 </ul>
-
+<div *ngFor="let appointment of appointments;index as i" (click)="actionCard()">
+    <app-customer-table-card [appointment]="appointment" [date]="date"></app-customer-table-card>
+</div>
 <div dir="rtl" class="customerArea">
-    <table *ngIf="appointments">
+    <!-- <table *ngIf="appointments">
         <thead>
             <tr>
                 <th>הזנה</th>
@@ -31,16 +33,24 @@
                 <td style="font-family: American typewriter;">{{appointment.startTime}}</td>
                 <td>
                     <p>{{getNameText(appointment.customer?.name!)}}</p>
-                    <p *ngIf="getStatus(appointment.customer?.phoneNumber!)" style="font-family: American typewriter;">{{appointment.customer?.phoneNumber!}}</p>
+                    <p *ngIf="getStatus(appointment.customer?.phoneNumber!)" style="font-family: American typewriter;">
+                        {{appointment.customer?.phoneNumber!}}</p>
                 </td>
                 <td dir="rtl">
-                    <span style="cursor:pointer" (click)="openSwapDialog(appointment)">החלף</span>
-                    <span style="cursor:pointer" (click)="openDelayDialog(appointment)">עיכוב</span>
-                    <span style="cursor:pointer" (click)="openDeleteDialog(appointment)">ביטול</span>
+                    <span *ngIf="!(appointment.customer?.name==='dummy')" style="cursor:pointer"
+                        (click)="openSwapDialog(appointment)">החלף</span>
+                    <span *ngIf="!(appointment.customer?.name==='dummy')" style="cursor:pointer"
+                        (click)="openDelayDialog(appointment)">עיכוב</span>
+                    <span *ngIf="!(appointment.customer?.name==='dummy')" style="cursor:pointer"
+                        (click)="openDeleteDialog(appointment)">ביטול</span>
+                    <div class="setAppointment" *ngIf="(appointment.customer?.name==='dummy')"
+                        (click)="openSetAppointmentDialog(appointment)"></div>
+
+                        <div class="actionCard" *ngIf="cardOpen">this card is open</div>
                 </td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
     <div>
         <span class="statistics">{{getCustomersStatistics()}}</span>
     </div>

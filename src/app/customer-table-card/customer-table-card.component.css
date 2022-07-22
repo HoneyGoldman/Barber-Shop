@@ -1,0 +1,26 @@
+ul {
+    width: -webkit-fill-available;
+}
+
+ul li {
+    margin: auto;
+    font-size: larger;
+}
+
+.ul {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    font-family: American typewriter;
+}
+
+.setAppointment {
+    float: right;
+    background-image: url(/assets/setAppointment2.png);
+    cursor: pointer;
+    height: 40px !important;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: 100%;
+}

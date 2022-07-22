@@ -4,6 +4,7 @@ import { Appointment } from 'src/Model/Appointment';
 import { Day } from 'src/Model/Day';
 import { DataServiceComponent } from '../data-service/data-service.component';
 import { GenericPopUpComponent } from '../generic-pop-up/generic-pop-up.component';
+import { SetAppointmentComponent } from '../set-appointment/set-appointment.component';
 import { SwapAppointmentComponent } from '../swap-appointment/swap-appointment.component';
 
 @Component({
@@ -31,6 +32,7 @@ export class DayViewComponent implements OnInit {
   day7:string="שבת";
   dayText=''
   confirmDelete:boolean=false;
+  cardOpen:boolean=false;
   constructor(private dataService: DataServiceComponent,public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -115,6 +117,14 @@ export class DayViewComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed '+result);
       this.confirmDelete = result;
+      if(result){
+        this.dataService.deleteAppointment(appointment).subscribe(result=>{
+          if(result){
+            console.log("success!")
+            this.ngOnInit();
+          }
+        })
+      }
     });
   }
 
@@ -141,6 +151,18 @@ export class DayViewComponent implements OnInit {
     });
   }
 
+  openSetAppointmentDialog(appointment:Appointment){
+    const dialogRef = this.dialog.open(SetAppointmentComponent, {
+      width: '250px',
+      data: {text:appointment.startTime,header:'',noText:'לא',yesText:'בטל'},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log('The dialog was closed '+result);
+      this.confirmDelete = result;
+    });
+  }
+
   getNameText(name:string){
     if(name==='dummy') return 'תור פנוי'
     return name;
@@ -149,5 +171,9 @@ export class DayViewComponent implements OnInit {
   getStatus(name:string){
     if(name!=='dummy') return true
     return false;
+  }
+
+  actionCard(){
+    this.cardOpen=!this.cardOpen;
   }
 }

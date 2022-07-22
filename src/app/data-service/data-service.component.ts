@@ -81,4 +81,9 @@ export class DataServiceComponent implements OnInit {
     return localDate;
   }
 
+  deleteAppointment(appointment:Appointment):Observable<boolean>{
+    const url = this.baseURL + '/Calendar/deleteAppointment?siteId=' + this.siteId+'&id='+appointment.id;
+    return this.http.delete<boolean>(url);
+  }
+
 }

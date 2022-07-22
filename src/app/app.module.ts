@@ -23,8 +23,10 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { DayViewComponent } from './day-view/day-view.component';
 import { GenericPopUpComponent } from './generic-pop-up/generic-pop-up.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { SwapAppointmentComponent } from './swap-appointment/swap-appointment.component'
-
+import { SwapAppointmentComponent } from './swap-appointment/swap-appointment.component';
+import { SetAppointmentComponent } from './set-appointment/set-appointment.component';
+import { CustomerTableCardComponent } from './customer-table-card/customer-table-card.component'
+import { MatExpansionModule } from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,9 @@ import { SwapAppointmentComponent } from './swap-appointment/swap-appointment.co
     CalendarComponent,
     DayViewComponent,
     GenericPopUpComponent,
-    SwapAppointmentComponent
+    SwapAppointmentComponent,
+    SetAppointmentComponent,
+    CustomerTableCardComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,9 @@ import { SwapAppointmentComponent } from './swap-appointment/swap-appointment.co
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatExpansionModule,
+
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'he-GB'},
