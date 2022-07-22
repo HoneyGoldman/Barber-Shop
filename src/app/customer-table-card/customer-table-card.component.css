@@ -12,6 +12,7 @@ ul li {
     list-style: none;
     text-align: center;
     font-family: American typewriter;
+    padding-top: 1%;
 }
 
 .setAppointment {
@@ -23,4 +24,13 @@ ul li {
     background-repeat: no-repeat;
     background-size: contain;
     background-position-x: 100%;
+}
+
+.greyAccordion{
+    background-color: #9A9A9A;
+}
+
+.greyAccordion:hover{
+    background-color: #dddddd !important;
+    margin-bottom: 2%;
 }

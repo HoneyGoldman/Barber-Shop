@@ -125,7 +125,7 @@ export class CustomerTableCardComponent implements OnInit {
       this.confirmDelete = result;
     });
   }
-  
+
   openSetPriorityAppointmentDialog(appointment: Appointment) {
     const dialogRef = this.dialog.open(SetAppointmentComponent, {
       width: '250px',
@@ -150,5 +150,13 @@ export class CustomerTableCardComponent implements OnInit {
   actionCard() {
     this.cardOpen = !this.cardOpen;
   }
+
+  getColor() {
+    if (this.cardOpen) { return '#9A9A9A' }
+    else {
+      return ''
+    }
+  }
+
 
 }

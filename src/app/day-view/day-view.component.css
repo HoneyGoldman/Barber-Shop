@@ -47,3 +47,25 @@ span {
     background-size: contain;
     background-position-x: 100%;
 }
+
+.leftButton{
+    float: right;
+    background-image: url(/assets/PolygonLeft.png);
+    cursor: pointer;
+    height: 40px;;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: 100%; 
+}
+
+.rightButton{
+    float: right;
+    background-image: url(/assets/PolygonRight.png);
+    cursor: pointer;
+    height: 40px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: 100%;
+}

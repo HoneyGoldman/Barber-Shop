@@ -1,5 +1,5 @@
 <!-- <h1>{{text}}</h1> -->
-<div>
+<div class="calendarComponent">
     <div *ngIf="!isRealoading && viewState==month" class="calendar">
         <mat-card *ngIf="!isRealoading" dir="rtl" class="demo-inline-calendar-card">
             <mat-calendar id="MatCalendar" [dateClass]="dateClass()" (selectedChange)="view(day)" [(selected)]="selected"></mat-calendar>

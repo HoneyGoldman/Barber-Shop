@@ -54,5 +54,13 @@ ul li {
 
 }
 
+.calendarComponent{
+    border-right: 1px dashed #9A9A9A;;
+}
+@media screen and (max-width: 992px) {
+    .calendarComponent{
+        border-right:0;
+    }
+}
 
 
