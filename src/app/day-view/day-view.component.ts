@@ -94,16 +94,16 @@ export class DayViewComponent implements OnInit {
   }
 
   nextDay(){
-    console.log("day1 is now "+this.date)
+    // console.log("day1 is now "+this.date)
     this.date?.setDate(this.date?.getDate()+1);
     this.ngOnInit()
-    console.log("day is now "+this.date)
+    // console.log("day is now "+this.date)
   }
   previusDay(){
-    console.log("day1 is now "+this.date)
+    // console.log("day1 is now "+this.date)
     this.date?.setDate(this.date?.getDate()-1);
     this.ngOnInit()
-    console.log("day is now "+this.date)
+    // console.log("day is now "+this.date)
   }
 
   openDeleteDialog(appointment:Appointment): void {
@@ -125,7 +125,7 @@ export class DayViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed '+result);
+      // console.log('The dialog was closed '+result);
       this.confirmDelete = result;
     });
   }
@@ -136,7 +136,7 @@ export class DayViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed '+result);
+      // console.log('The dialog was closed '+result);
       this.confirmDelete = result;
     });
   }

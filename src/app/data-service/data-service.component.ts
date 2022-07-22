@@ -32,7 +32,7 @@ export class DataServiceComponent implements OnInit {
   }
 
   getDay(day: number, month: number, year: number): Observable<Appointment[]> {
-    console.log("Data service: get Day " + day + " " + month + " " + year + " ")
+    // console.log("Data service: get Day " + day + " " + month + " " + year + " ")
     const url = this.baseURL + '/Calendar/getFullAppointmenForDay?siteId=' + this.siteId + '&day=' + day + '&month=' + (month + 1) + '&year=' + year;
     if (this.siteId === null || this, this.siteId === undefined) {
       console.log("Data service: No SITE ID !!")
@@ -44,7 +44,7 @@ export class DataServiceComponent implements OnInit {
   }
 
   getRealAppointmentsDay(day: number, month: number, year: number): Observable<Appointment[]> {
-    console.log("Data service: get Day " + day + " " + month + " " + year + " ")
+    // console.log("Data service: get Day " + day + " " + month + " " + year + " ")
     const url = this.baseURL + '/Calendar/getDay?siteId=' + this.siteId + '&day=' + day + '&month=' + (month + 1) + '&year=' + year;
     if (this.siteId === null || this, this.siteId === undefined) {
       console.log("Data service: No SITE ID !!")
