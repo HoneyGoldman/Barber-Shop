@@ -23,18 +23,20 @@
                             {{getNameText(appointment?.customer?.name!)}}
                         </div>
                         <div *ngIf="!(appointment?.customer?.name==='dummy')">
-                            {{appointment?.customer?.phoneNumber}}
+                            <a href="{{getDialLink(appointment?.customer?.phoneNumber)}}">
+                                {{appointment?.customer?.phoneNumber}}
+                            </a>
                         </div>
                     </li>
                     <li>
                         <span *ngIf="!(appointment?.customer?.name==='dummy')" style="cursor:pointer"
                             (click)="openSwapDialog(appointment!)">החלף</span>
                     </li>
-                    <li  *ngIf="(appointment?.customer?.name==='dummy')">
+                    <li *ngIf="(appointment?.customer?.name==='dummy')">
                     </li>
-                    <li  *ngIf="(appointment?.customer?.name==='dummy')">
+                    <li *ngIf="(appointment?.customer?.name==='dummy')">
                     </li>
-                    <li  *ngIf="(appointment?.customer?.name==='dummy')">
+                    <li *ngIf="(appointment?.customer?.name==='dummy')">
                     </li>
                     <li *ngIf="!(appointment?.customer?.name==='dummy')">
                         <span style="cursor:pointer" (click)="openDelayDialog(appointment!)">עיכוב</span>

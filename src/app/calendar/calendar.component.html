@@ -1,8 +1,9 @@
 <!-- <h1>{{text}}</h1> -->
 <div class="calendarComponent" style="margin-top: 20%;">
-    <div *ngIf="!isRealoading && viewState==month" class="calendar">
+    <div *ngIf="!isRealoading && viewState==month" class="calendar contentAnimation">
         <mat-card *ngIf="!isRealoading" dir="rtl" class="demo-inline-calendar-card">
-            <mat-calendar id="MatCalendar" [dateClass]="dateClass()" (selectedChange)="view(day)" [(selected)]="selected"></mat-calendar>
+            <mat-calendar id="MatCalendar" [dateClass]="dateClass()" (selectedChange)="view(day)"
+                [(selected)]="selected"></mat-calendar>
         </mat-card>
         <!-- <p>Selected date: {{selected}}</p> -->
     </div>
@@ -11,10 +12,12 @@
     </div>
     <hr class="grey" style="margin: auto;height: 2px;border: 0;margin-left: 10px;
     margin-right: 10px;">
-    <ul>
-        <li (click)="view(week)" [ngClass]="(week===viewState) ? 'bold' : 'regular'">תצוגה שבועית</li>
-        <li (click)="view(day)" [ngClass]="(day===viewState) ? 'bold' : 'regular'">תצוגה יומית</li>
-        <li (click)="view(month)" [ngClass]="(month===viewState) ? 'bold' : 'regular'">תצוגה חודשית</li>
-    </ul>
+    <div class="ul">
+        <ul>
+            <li (click)="view(week)" [ngClass]="(week===viewState) ? 'bold' : 'regular'">תצוגה שבועית</li>
+            <li (click)="view(month)" [ngClass]="(month===viewState) ? 'bold' : 'regular'">תצוגה חודשית</li>
+            <li (click)="view(day)" [ngClass]="(day===viewState) ? 'bold' : 'regular'">תצוגה יומית</li>
 
+        </ul>
+    </div>
 </div>

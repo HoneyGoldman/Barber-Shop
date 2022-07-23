@@ -13,6 +13,8 @@ ul li {
     text-align: center;
     font-family: American typewriter;
     padding-top: 1%;
+    padding-right: 0;
+    padding-left: 0;
 }
 
 .setAppointment {

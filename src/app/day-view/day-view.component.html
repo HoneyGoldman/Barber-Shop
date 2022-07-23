@@ -1,38 +1,40 @@
-
-<ul class="ul">
-    <li class="li">
-        <div (click)="nextDay()" style="margin:auto">
-            <img style="height: 50px;" src="../../assets/PolygonLeft.png" alt="next day">
+<div class="fadeIn">
+    <ul class="ul">
+        <li class="li">
+            <div (click)="nextDay()" style="margin:auto">
+                <img style="height: 50px;" src="../../assets/PolygonLeft.png" alt="next day">
+            </div>
+        </li>
+        <li class="li">
+            <h1 style="text-align: center;font-family: American typewriter;">{{dateSTR}}</h1>
+            <h1 dir="rtl" style="text-align: center;">{{dayText}}</h1>
+        </li>
+        <li class="li">
+            <div (click)="previusDay()">
+                <img style="height: 50px;" src="../../assets/PolygonRight.png" alt="previus day">
+            </div>
+        </li>
+    </ul>
+    <table dir="rtl" style="margin-right: 15%;margin-top: 10%;" *ngIf="appointments">
+        <thead>
+            <tr>
+                <th>הזנה</th>
+                <th>שעה</th>
+                <th>פרטים</th>
+                <th>פעולות</th>
+                <th>הגיע</th>
+            </tr>
+        </thead>
+    </table>
+    <div style="height: 480px;overflow-y: scroll;">
+        <div *ngFor="let appointment of appointments;index as i" class="contentAnimation">
+            <app-customer-table-card [appointment]="appointment" [date]="date" style="margin-top: 5px;">
+            </app-customer-table-card>
+            <br>
         </div>
-    </li>
-    <li class="li">
-        <h1 style="text-align: center;font-family: American typewriter;">{{dateSTR}}</h1>
-        <h1 dir="rtl" style="text-align: center;">{{dayText}}</h1>
-    </li>
-    <li class="li">
-        <div (click)="previusDay()">
-            <img style="height: 50px;" src="../../assets/PolygonRight.png" alt="previus day">
-        </div>
-    </li>
-</ul>
-<table dir="rtl" style="margin-right: 15%;margin-top: 10%;" *ngIf="appointments">
-    <thead>
-        <tr>
-            <th>הזנה</th>
-            <th>שעה</th>
-            <th>פרטים</th>
-            <th>פעולות</th>
-            <th>הגיע</th>
-        </tr>
-    </thead>
-</table>
-
-<div *ngFor="let appointment of appointments;index as i">
-    <app-customer-table-card [appointment]="appointment" [date]="date" style="margin-top: 5px;"></app-customer-table-card>
-    <br>
-</div>
-<div dir="rtl" class="customerArea">
-    <!-- <table *ngIf="appointments">
+    </div>
+    <div dir="rtl" class="customerArea">
+        <!-- <table *ngIf="appointments">
         <thead>
             <tr>
                 <th>הזנה</th>
@@ -68,7 +70,8 @@
             </tr>
         </tbody>
     </table> -->
-    <div>
-        <span class="statistics">{{getCustomersStatistics()}}</span>
+        <div>
+            <span class="statistics">{{getCustomersStatistics()}}</span>
+        </div>
     </div>
 </div>

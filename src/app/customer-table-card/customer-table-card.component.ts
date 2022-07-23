@@ -158,5 +158,12 @@ export class CustomerTableCardComponent implements OnInit {
     }
   }
 
+  getDialLink(phoneNumber:string|undefined){
+    if(phoneNumber!==undefined){
+    return 'tel:'+phoneNumber;}
+    else {
+      return 'no link'
+    }
+  }
 
 }
