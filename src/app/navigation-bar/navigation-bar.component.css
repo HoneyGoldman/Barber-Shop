@@ -10,6 +10,7 @@ ul {
 .imgDiv {
     width: 30%;
     padding-right: 5%;
+    max-height: 50px;
 }
 
 .config h1 {
@@ -65,4 +66,6 @@ nav {
 .navigationBarSpecial {
     position: fixed;
     z-index: 1;
+    width: -webkit-fill-available;
+
 }

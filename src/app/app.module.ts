@@ -27,6 +27,7 @@ import { SwapAppointmentComponent } from './swap-appointment/swap-appointment.co
 import { SetAppointmentComponent } from './set-appointment/set-appointment.component';
 import { CustomerTableCardComponent } from './customer-table-card/customer-table-card.component'
 import { MatExpansionModule } from '@angular/material/expansion';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatNativeDateModule,
     BrowserAnimationsModule,
     MatExpansionModule,
-
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'he-GB'},
