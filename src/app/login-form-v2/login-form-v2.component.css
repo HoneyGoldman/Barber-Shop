@@ -27,3 +27,13 @@
         margin: auto;
     }
 }
+
+
+.setAppointment{
+    width: 60%;
+    margin: auto;
+    color: white;
+    display: flex;
+    background-color: black;
+    margin-top: 15px;
+}

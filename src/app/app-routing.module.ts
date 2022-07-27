@@ -6,11 +6,13 @@ import { HomeComponent } from './home/home.component';
 import { LoginFormV2Component } from './login-form-v2/login-form-v2.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { LoginHebComponentComponent } from './login-heb-component/login-heb-component.component';
+import { SetMyOrderComponent } from './set-my-order/set-my-order.component';
 
 
 const routes: Routes = [
   { path: '', component: LoginFormV2Component},
-  { path: 'Home', component: HomeComponent}
+  { path: 'Home', component: HomeComponent},
+  { path: 'setOrder', component: SetMyOrderComponent}
 ];
 
 @NgModule({

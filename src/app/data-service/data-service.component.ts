@@ -81,9 +81,17 @@ export class DataServiceComponent implements OnInit {
     return localDate;
   }
 
-  deleteAppointment(appointment:Appointment):Observable<boolean>{
-    const url = this.baseURL + '/Calendar/deleteAppointment?siteId=' + this.siteId+'&id='+appointment.id;
+  deleteAppointment(appointment: Appointment): Observable<boolean> {
+    const url = this.baseURL + '/Calendar/deleteAppointment?siteId=' + this.siteId + '&id=' + appointment.id;
     return this.http.delete<boolean>(url);
+  }
+
+  getAllBarbers(): Observable<Admin[]> {
+    const url = this.baseURL + '/Admin/getAll/';
+    if (this.siteId === null || this, this.siteId === undefined) {
+      console.log("Data service: No SITE ID !!")
+    }
+    return this.http.get<Admin[]>(url);
   }
 
 }

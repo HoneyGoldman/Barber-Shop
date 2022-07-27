@@ -36,9 +36,14 @@ background-image: linear-gradient(0deg,#6BD9F2, #88D4F2, #F2F2F2, #F2F2F2, #F2F2
         width: 60%;float: center;margin: auto;">
         </div>
         <div>
-
-
-
+            <div>
+                <button (click)="setAppointment()" class="buttonV2 setAppointment">
+                    <div style="margin: auto;"><b>
+                            קבע לי תור
+                        </b>
+                    </div>
+                </button>
+            </div>
             <h2 class="h1V2" style="font-size: 15px;margin: 0;text-align: center;">התחברות</h2>
         </div>
         <app-generic-form [properties]=properties></app-generic-form>

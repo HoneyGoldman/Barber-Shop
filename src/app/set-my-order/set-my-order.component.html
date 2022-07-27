@@ -1,0 +1,25 @@
+<app-guest-navigation-bar></app-guest-navigation-bar>
+    <div dir="rtl" style="display: block;" class="contentAnimationSlow">
+        <h1 style="text-align: center;margin-top: 10%;">חפש ספר</h1>
+        <!-- <input type="text"> -->
+        <form class="generic-form" [formGroup]="formGroup" (ngSubmit)=Submit()>
+            <div class="input">
+                <!-- <input formControlName="barberName"
+            placeholder=text> -->
+                <input type="text" placeholder="בחר ספר" aria-label="Number" matInput [formControl]="myControl"
+                    [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let name of filteredOptions | async" [value]="name">
+                        {{name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </div>
+            <div class="buttonV2 setAppointment">
+                <button class="buttonV2 blackWhite" type="submit" [disabled]=!formGroup.valid>
+                    <span>
+                        קבע לי תור
+                    </span>
+                </button>
+            </div>
+        </form>
+    </div>

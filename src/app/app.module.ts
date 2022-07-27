@@ -27,6 +27,12 @@ import { SwapAppointmentComponent } from './swap-appointment/swap-appointment.co
 import { SetAppointmentComponent } from './set-appointment/set-appointment.component';
 import { CustomerTableCardComponent } from './customer-table-card/customer-table-card.component'
 import { MatExpansionModule } from '@angular/material/expansion';
+import { SetMyOrderComponent } from './set-my-order/set-my-order.component';
+import { GuestNavigationBarComponent } from './guest-navigation-bar/guest-navigation-bar.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +52,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     GenericPopUpComponent,
     SwapAppointmentComponent,
     SetAppointmentComponent,
-    CustomerTableCardComponent
+    CustomerTableCardComponent,
+    SetMyOrderComponent,
+    GuestNavigationBarComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +67,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatNativeDateModule,
     BrowserAnimationsModule,
     MatExpansionModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'he-GB'},

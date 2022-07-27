@@ -1,0 +1,23 @@
+.input{
+    margin: auto;
+    display: table;
+    
+}
+
+.setAppointment{
+    width: 40%;
+    margin: auto;
+    color: white;
+    display: flex;
+    background-color: black;
+    margin-top: 15px;
+}
+
+.blackWhite{
+    background-color: black;
+    color: white;
+}
+
+.form{
+    
+}

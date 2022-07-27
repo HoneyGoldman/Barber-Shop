@@ -80,4 +80,8 @@ export class LoginFormV2Component implements OnInit, AfterViewInit {
     this.dataService.storeAdmin(new Admin);
   }
 
+
+  setAppointment(){
+    this.router.navigateByUrl('/setOrder')
+  }
 }
