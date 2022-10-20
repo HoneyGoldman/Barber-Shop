@@ -15,13 +15,17 @@ export class CalendarComponent implements OnInit, AfterViewChecked {
   week = 'week'
   day = 'day'
   month = 'month'
+  state={day:0,month:0,year:0}
   viewState = 'month'; //defaule view state
   days: Map<string, Appointment[]> = new Map<string, Appointment[]>();
   isRealoading: boolean = true;
   isAlreadyRunDivAppending: boolean = false;
   constructor(private data: DataServiceComponent) { }
 
-  @ViewChild('MatCalendar') set calendar(calendar:MatCalendar<null>){
+
+  // @ViewChild(MatCalendar, { static: false }) calendar!: MatCalendar<Date>;
+
+  @ViewChild('MatCalendar') set calendar(calendar:MatCalendar<Date>){
       this.putDivToClasses();
   }
 
@@ -31,8 +35,17 @@ export class CalendarComponent implements OnInit, AfterViewChecked {
 
 
   ngOnInit(): void {
+    this.isRealoading=true;
     this.selected = new Date();
-    this.data.getAllmonthAppointment(this.selected!.getMonth(), this.selected!.getFullYear()).subscribe(appointments => {
+    this.state.day=this.selected.getDay();
+    this.state.month=this.selected.getMonth()+1;
+    this.state.year=this.selected.getFullYear();
+    this.updateMonthCache(this.state.month, this.state.year);
+    this.isRealoading=false;
+  }
+
+  updateMonthCache(month:number,year:number){
+    this.data.getAllmonthAppointment(month, year).subscribe(appointments => {
       appointments.forEach(appointment => {
         if (this.days.get(String(appointment.date)) === undefined) {
           let newArr: Appointment[] = [appointment]
@@ -41,30 +54,24 @@ export class CalendarComponent implements OnInit, AfterViewChecked {
           this.days.get(String(appointment.date))?.push(appointment);
         }
       })
-      // console.log(this.days)
-      this.isRealoading = false;
 
     }, err => { console.log(err) }
     )
-
   }
 
   view(view: string) {
     this.viewState = view;
   }
 
-  getStyle(type: string) {
-    return (type === this.viewState) ? "{'font-weight':'bold'}" : "{'font-weight':'bold'}"
-
+  onChangeEvent($event: any) {
+    console.log($event)
+    this.putDivToClasses()
   }
-
 
   dateClass() {
     return (matDate: Date): MatCalendarCellCssClasses => {
-      // console.log("date from mat-calendar is " + matDate)
-      let newFormat = this.formatDate(matDate);
-      // console.log("get class for date " + newFormat + " " + this.days.get(newFormat)?.length!)
-      return this.getClassForDate(newFormat);
+      let newDateFormat = this.formatDate(matDate);
+      return this.getClassForDate(newDateFormat);
     }
   }
 
@@ -85,8 +92,6 @@ export class CalendarComponent implements OnInit, AfterViewChecked {
   }
 
   getClassBySize(size: number) {
-
-    // console.log("size class function " + size)
     if (size > 0 && size < 3) {
       return 'oneDot'
     }
@@ -97,65 +102,45 @@ export class CalendarComponent implements OnInit, AfterViewChecked {
       return 'threeDot'
     }
     else {
-      return 'default'
+      return 'defaultDot'
     }
   }
 
   putDivToClasses() {
-      // console.log("started")
-      let paddingTop='5%'
-      let fontSize='40px'
-      var oneDot = document.getElementsByClassName('oneDot');
-      if (oneDot !== undefined) {
-        for (var i = 0; i < oneDot.length; i++) {
-          var div = document.createElement('div');
-          // div.style.setProperty('font-size',fontSize );
-          // div.style.setProperty('padding-top',paddingTop)
-          div.textContent = ".";
-          div.classList.add('oneDotClass')
-          oneDot[i].appendChild(div);
+      let classesBody={oneDot:'.',towDot:'..',threeDot:'...',defaultDot:'.'}
+      for (const [key, value] of Object.entries(classesBody)) {
+        let elements=document.getElementsByClassName(key)
+        if(elements!==undefined){
+          for (var i = 0; i < elements.length; i++) {
+            var div = document.createElement('div');
+            div.textContent = value;
+            if(elements[i].childElementCount===2){
+            div.classList.add(''+key)
+              elements[i].appendChild(div);
+            }
+          }
         }
       }
-
-      var twoDot = document.getElementsByClassName('towDot');
-      if (twoDot !== undefined) {
-        for (var i = 0; i < twoDot.length; i++) {
-          var div = document.createElement('div');
-          // div.style.setProperty('font-size', fontSize);
-          // div.style.setProperty('padding-top',paddingTop)
-          div.textContent = "..";
-          div.classList.add('towDotClass')
-          twoDot[i].appendChild(div);
-        }
-      }
-
-      var threeoDot = document.getElementsByClassName('threeDot');
-      if (threeoDot !== undefined) {
-        for (var i = 0; i < threeoDot.length; i++) {
-          var div = document.createElement('div');
-          // div.style.setProperty('font-size',fontSize);
-          // div.style.setProperty('padding-top',paddingTop)
-          div.textContent = "...";
-          div.classList.add('threeDotClass')
-          threeoDot[i].appendChild(div);
-        }
-      }
-
-      var defaultList = document.getElementsByClassName('default');
-      if (defaultList !== undefined) {
-        for (var i = 0; i < defaultList.length; i++) {
-          var div = document.createElement('div');
-          // div.style.setProperty('font-size', '40px');
-          // div.style.setProperty('padding-top',paddingTop)
-          div.style.setProperty('color', '#9A9A9A');
-          div.textContent = ".";
-          div.classList.add('defaultDotClass')
-          defaultList[i].appendChild(div);
-        }
-      }
-     this.isAlreadyRunDivAppending=true;
-    
   }
 
+  @HostListener('click', ['$event'])
+  onClick(event: any) {
+    if (event.target.ariaLabel && event.target.ariaLabel.includes("Previous month")) {
+      
+      this.state.month=this.state.month-1;
+      if(this.state.month===0){
+        this.state.month=12
+        this.state.year=this.state.year-1
+      }
+      this.updateMonthCache(this.state.month,this.state.year);
+    } else if (event.target.ariaLabel && event.target.ariaLabel.includes("Next month")) {
+      this.state.month=this.state.month+1;
+      if(this.state.month===13){
+        this.state.month=1
+        this.state.year=this.state.year+1
+      }
+      this.updateMonthCache(this.state.month,this.state.year);
+    }
+  }
 
 }
