@@ -100,17 +100,22 @@ body {
 
 .calendarContainer {
   width: 50%;
+  max-width: 100%;
   height: max-content;
 }
 
 .quickSummary {
-  width: 40%;
+  width: 50%;
   height: max-content;
 }
 
 @media screen and (max-width: 992px) {
+  .container{
+    flex-direction: column;
+  }
+
   .quickSummary {
-    display: none;
+   
   }
 
   .calendarContainer {
@@ -126,45 +131,46 @@ body {
   box-shadow: 0 0px 3px 0;
 }
 
-.oneDotClass {
+.oneDot {
   padding-top: 10%;
   font-size: 45px;
 }
 
-.towDotClass {
+.towDot {
   padding-top: 10%;
   font-size: 45px;
 }
 
-.threeDotClass {
+.threeDot{
   padding-top: 10%;
   font-size: 45px;
 }
 
-.defaultDotClass {
+.defaultDot {
   padding-top: 10%;
-  font-size: 45px;
+  font-size: 100%;
+  color:#9A9A9A;
 }
 
 @media screen and (max-width: 992px) {
-  .oneDotClass {
-    padding-top: 3%;
-    font-size: 40px;
+  .oneDot {
+    padding-top: 16%;
+    font-size: 160%;
   }
 
-  .towDotClass {
-    padding-top: 3%;
-    font-size: 40px;
+  .towDot {
+    padding-top: 16%;
+    font-size: 160%;
   }
 
-  .threeDotClass {
-    padding-top: 3%;
-    font-size: 40px;
+  .threeDot {
+    padding-top: 16%;
+    font-size: 160%;
   }
 
-  .defaultDotClass {
-    padding-top: 3%;
-    font-size: 40px;
+  .defaultDot {
+    padding-top: 16%;
+    font-size: 160%;
   }
 
 }
