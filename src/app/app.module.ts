@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataServiceComponent } from './data-service/data-service.component';
@@ -32,6 +31,7 @@ import { GuestNavigationBarComponent } from './guest-navigation-bar/guest-naviga
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { QuickSummaryComponent } from 'src/quick-summary/quick-summary.component';
 
 
 @NgModule({
@@ -54,7 +54,8 @@ import { MatInputModule } from '@angular/material/input';
     SetAppointmentComponent,
     CustomerTableCardComponent,
     SetMyOrderComponent,
-    GuestNavigationBarComponent
+    GuestNavigationBarComponent,
+    QuickSummaryComponent
   ],
   imports: [
     BrowserModule,
