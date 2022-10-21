@@ -96,6 +96,7 @@ body {
   height: -webkit-fill-available;
   padding-left: 0;
   padding-right: 0;
+  padding-top: 56px;
 }
 
 .calendarContainer {
@@ -115,7 +116,9 @@ body {
   }
 
   .quickSummary {
-   
+    width: 100%;
+    height: 150%;
+    padding-bottom: 40%;
   }
 
   .calendarContainer {
@@ -132,44 +135,44 @@ body {
 }
 
 .oneDot {
-  padding-top: 10%;
+  padding-top: 16%;
   font-size: 45px;
 }
 
 .towDot {
-  padding-top: 10%;
+  padding-top: 16%;
   font-size: 45px;
 }
 
 .threeDot{
-  padding-top: 10%;
+  padding-top: 16%;
   font-size: 45px;
 }
 
 .defaultDot {
-  padding-top: 10%;
-  font-size: 100%;
+  padding-top: 16%;
+  font-size: 45px;
   color:#9A9A9A;
 }
 
 @media screen and (max-width: 992px) {
   .oneDot {
-    padding-top: 16%;
+    padding-top: 12%;
     font-size: 160%;
   }
 
   .towDot {
-    padding-top: 16%;
+    padding-top: 12%;
     font-size: 160%;
   }
 
   .threeDot {
-    padding-top: 16%;
+    padding-top: 12%;
     font-size: 160%;
   }
 
   .defaultDot {
-    padding-top: 16%;
+    padding-top: 12%;
     font-size: 160%;
   }
 
