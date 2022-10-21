@@ -30,7 +30,6 @@ export class CalendarComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked(): void {
-    
   }
 
 
@@ -40,7 +39,25 @@ export class CalendarComponent implements OnInit, AfterViewChecked {
     this.state.day=this.selected.getDay();
     this.state.month=this.selected.getMonth()+1;
     this.state.year=this.selected.getFullYear();
-    this.updateMonthCache(this.state.month, this.state.year);
+    for (let index = 0; index < 6; index++) {
+      let tmpState=this.state
+      tmpState.month=tmpState.month-1
+      if(tmpState.month===0){
+        tmpState.month=12
+        tmpState.year=tmpState.year-1
+      }
+      this.updateMonthCache(tmpState.month, tmpState.year);
+    }
+    for (let index = 0; index < 6; index++) {
+      let tmpState=this.state
+      tmpState.month=tmpState.month+1
+      if(tmpState.month>=12){
+        tmpState.month=11
+        tmpState.year=tmpState.year+1
+      }
+      this.updateMonthCache(tmpState.month, tmpState.year);
+    }
+   
     this.isRealoading=false;
   }
 
@@ -54,7 +71,7 @@ export class CalendarComponent implements OnInit, AfterViewChecked {
           this.days.get(String(appointment.date))?.push(appointment);
         }
       })
-
+      this.putDivToClasses();
     }, err => { console.log(err) }
     )
   }
@@ -132,15 +149,15 @@ export class CalendarComponent implements OnInit, AfterViewChecked {
         this.state.month=12
         this.state.year=this.state.year-1
       }
-      this.updateMonthCache(this.state.month,this.state.year);
     } else if (event.target.ariaLabel && event.target.ariaLabel.includes("Next month")) {
       this.state.month=this.state.month+1;
       if(this.state.month===13){
         this.state.month=1
         this.state.year=this.state.year+1
       }
-      this.updateMonthCache(this.state.month,this.state.year);
+      
     }
+    this.updateMonthCache(this.state.month,this.state.year);
   }
 
 }
