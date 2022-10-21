@@ -3,6 +3,6 @@
     <mat-dialog-content>{{data.text}}</mat-dialog-content>
     <mat-dialog-actions>
         <button class="dailogButton" mat-button [mat-dialog-close]="true">{{data.yesText}}</button>
-        <button class="dailogButton" mat-button mat-dialog-close>{{data.noText}}</button>
+        <button *ngIf="data.noText" class="dailogButton" mat-button mat-dialog-close>{{data.noText}}</button>
     </mat-dialog-actions>
 </div>

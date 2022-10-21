@@ -1,4 +1,4 @@
-import { MatDialogModule } from "@angular/material/dialog";
+import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { AppRoutingModule } from "src/app/app-routing.module";
 import { DataServiceComponent } from "src/app/data-service/data-service.component";
@@ -24,6 +24,6 @@ export class GenericFormProperties{
     propertyTranslation?:Map<string,string>;
     submitAction?:Function;
 
-    constructor(public router:Router,public dialog:MatDialogModule,public dataService:DataServiceComponent){
+    constructor(public router:Router,public dialog:MatDialog,public dataService:DataServiceComponent){
     }
 }

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Admin } from 'src/Model/Admin';
 import { GenericFormProperties } from 'src/Model/GenericFormProperties';
@@ -13,7 +13,7 @@ import { DataServiceComponent } from '../data-service/data-service.component';
 })
 export class LoginHebComponentComponent implements OnInit ,AfterViewInit {
   properties: GenericFormProperties = new GenericFormProperties(this.router, this.dialog,this.dataService);
-  constructor(private router: Router, private dialog: MatDialogModule,public dataService:DataServiceComponent) { }
+  constructor(private router: Router, private dialog: MatDialog,public dataService:DataServiceComponent) { }
 
   ngAfterViewInit(): void {
     let x=document.getElementById('אימייל');

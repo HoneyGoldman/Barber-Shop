@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import {Admin} from 'src/Model/Admin';
 import { GenericFormProperties } from 'src/Model/GenericFormProperties';
@@ -13,7 +13,7 @@ import { DataServiceComponent } from '../data-service/data-service.component';
 })
 export class LoginFormComponent implements OnInit {
   properties: GenericFormProperties = new GenericFormProperties(this.router,this.dialog,this.data);
-  constructor(private router:Router,private dialog:MatDialogModule,private data:DataServiceComponent) { }
+  constructor(private router:Router,private dialog:MatDialog,private data:DataServiceComponent) { }
 
   ngOnInit(): void {
     let admin = new Admin();

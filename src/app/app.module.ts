@@ -33,7 +33,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { QuickSummaryComponent } from 'src/quick-summary/quick-summary.component';
 import { CustomerBlockComponent } from 'src/customer-block/customer-block.component';
-
+import { CustomerEditorComponent } from 'src/customer-editor/customer-editor.component';
+import {MatIconModule} from '@angular/material/icon';
+import { Customer } from 'src/Model/Customer';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { CustomerBlockComponent } from 'src/customer-block/customer-block.compon
     SetMyOrderComponent,
     GuestNavigationBarComponent,
     QuickSummaryComponent,
-    CustomerBlockComponent
+    CustomerBlockComponent,
+    CustomerEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import { CustomerBlockComponent } from 'src/customer-block/customer-block.compon
     MatExpansionModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'he-GB'},

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CustomerEditorComponent } from 'src/customer-editor/customer-editor.component';
 import { Customer } from 'src/Model/Customer';
 
 @Component({
@@ -9,7 +11,7 @@ import { Customer } from 'src/Model/Customer';
 export class QuickSummaryComponent implements OnInit {
   currentCustomer:Customer=new Customer();
   nextCustomer:Customer=new Customer();
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.currentCustomer.name='חוני גולדמן'
@@ -18,4 +20,12 @@ export class QuickSummaryComponent implements OnInit {
     this.nextCustomer.phoneNumber='055-643210'
   }
 
+
+  openCustomerEditorDialog(){
+    const dialogRef = this.dialog.open(CustomerEditorComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ' + result);
+     
+    });
+  }
 }

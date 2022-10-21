@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Admin } from 'src/Model/Admin';
 import { Appointment } from 'src/Model/Appointment';
+import { Customer } from 'src/Model/Customer';
 import { Day } from 'src/Model/Day';
 
 @Component({
@@ -92,6 +93,12 @@ export class DataServiceComponent implements OnInit {
       console.log("Data service: No SITE ID !!")
     }
     return this.http.get<Admin[]>(url);
+  }
+
+  saveCustomer(customer:Customer){
+    const url = this.baseURL + '/Customer/saveCustomer';
+    console.log('save customer '+JSON.stringify(customer))
+    return this.http.put(url,customer);
   }
 
 }
