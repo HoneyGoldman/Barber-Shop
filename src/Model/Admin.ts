@@ -5,6 +5,7 @@ export class Admin {
     password?: string;
     familyName?: number;
     siteId?:string;
+    phoneNumber?:string;
     constructor(){
         
     }

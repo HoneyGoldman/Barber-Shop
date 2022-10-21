@@ -21,3 +21,35 @@
 .form{
     
 }
+
+.choosingButton{
+    margin:0 20px 5px 10px;
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    padding: 10px;
+
+}
+
+.item {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 15px;
+}
+
+input{
+    width: -webkit-fill-available;
+}
+
+.barberCard{
+    width: 70%;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 20px;
+    margin: auto;
+}

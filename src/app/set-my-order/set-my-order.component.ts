@@ -10,11 +10,19 @@ import { map, startWith } from 'rxjs/operators';
   styleUrls: ['./set-my-order.component.css']
 })
 export class SetMyOrderComponent implements OnInit {
+  isLoading: boolean = true;
   formGroup = new UntypedFormGroup({});
-  myControl = new FormControl('');
+  myControl = new FormControl('', Validators.required);
+  locationsSearch = new FormControl('', Validators.required);
   barbers: Admin[] = []
   barbersNames: string[] = []
   filteredOptions: Observable<string[]> | undefined;
+  iKnowMyBarberFlag: boolean = false;
+  searchByLocationFlag: boolean = true;
+  allLocations: string[] = []
+  selectedLocations: string[] = []
+  searchResults:Admin[]=[]
+
   constructor(private formBuilder: UntypedFormBuilder, private data: DataServiceComponent) { }
 
   ngOnInit(): void {
@@ -27,6 +35,13 @@ export class SetMyOrderComponent implements OnInit {
           this.barbersNames.push(barberFullName);
         }
       })
+      this.data.getAllLocations().subscribe(results => {
+        results.forEach(location => {
+          this.allLocations.push(location.location!);
+        })
+      })
+      this.selectedLocations = this.allLocations;
+      this.isLoading = false
     })
 
     this.formBuilder.group({
@@ -38,8 +53,18 @@ export class SetMyOrderComponent implements OnInit {
     );
   }
 
-  Submit() {
-    console.log(JSON.stringify(this.myControl.value))
+  LocationSearch() {
+    this.data.searchBarberByLocation(this.selectedLocations).subscribe(res => {
+      console.log(res)
+      this.searchResults=res;
+    })
+    console.log(JSON.stringify(this.locationsSearch.value))
+  }
+
+  SubmitByName() {
+    console.log(JSON.stringify(this.locationsSearch.value))
+    console.log(JSON.stringify(this.selectedLocations))
+
   }
 
 
@@ -47,5 +72,25 @@ export class SetMyOrderComponent implements OnInit {
     // console.log("filter " + value)
     const filterValue = value.toLowerCase();
     return this.barbersNames.filter(name => name.toLowerCase().includes(filterValue));
+  }
+
+
+  iKnowMyBarber() {
+    this.searchByLocationFlag = false;
+    this.iKnowMyBarberFlag = true;
+  }
+
+  searchByLocation() {
+    this.iKnowMyBarberFlag = false;
+    this.searchByLocationFlag = true;
+  }
+
+  onKey(target: any) {
+    this.selectedLocations = this.filter(target.value);
+  }
+
+  filter(value: string) {
+    let filter = value;
+    return this.allLocations.filter(option => option.includes(filter));
   }
 }

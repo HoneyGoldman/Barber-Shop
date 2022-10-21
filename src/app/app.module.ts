@@ -36,7 +36,7 @@ import { CustomerBlockComponent } from 'src/customer-block/customer-block.compon
 import { CustomerEditorComponent } from 'src/customer-editor/customer-editor.component';
 import {MatIconModule} from '@angular/material/icon';
 import { Customer } from 'src/Model/Customer';
-
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +76,8 @@ import { Customer } from 'src/Model/Customer';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'he-GB'},

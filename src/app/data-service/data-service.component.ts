@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -6,6 +6,7 @@ import { Admin } from 'src/Model/Admin';
 import { Appointment } from 'src/Model/Appointment';
 import { Customer } from 'src/Model/Customer';
 import { Day } from 'src/Model/Day';
+import { Location } from 'src/Model/Location';
 
 @Component({
   selector: 'app-data-service',
@@ -99,6 +100,16 @@ export class DataServiceComponent implements OnInit {
     const url = this.baseURL + '/Customer/saveCustomer';
     console.log('save customer '+JSON.stringify(customer))
     return this.http.put(url,customer);
+  }
+
+  getAllLocations(): Observable<Location[]>{
+    const url = this.baseURL + '/General/Locations';
+    return this.http.get<Location[]>(url);
+  }
+
+  searchBarberByLocation(locations:string[]):Observable<Admin[]>{
+    const url = this.baseURL + '/Admin/barberSearch?locations='+locations;
+    return this.http.get<Admin[]>(url);
   }
 
 }

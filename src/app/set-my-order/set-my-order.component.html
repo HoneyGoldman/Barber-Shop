@@ -1,8 +1,21 @@
 <app-guest-navigation-bar></app-guest-navigation-bar>
-    <div dir="rtl" style="display: block;" class="contentAnimationSlow">
-        <h1 style="text-align: center;margin-top: 10%;">חפש ספר</h1>
-        <!-- <input type="text"> -->
-        <form class="generic-form" [formGroup]="formGroup" (ngSubmit)=Submit()>
+<div *ngIf="!isLoading" dir="rtl" style="display: block;" class="contentAnimationSlow">
+    <h1 style="text-align: center;margin-top: 10%;">חפש ספר</h1>
+    <!-- <input type="text"> -->
+    <div class="grid">
+        <div class="item">
+            <button class="buttonV2 choosingButton" (click)="searchByLocation()" [ngStyle]="searchByLocationFlag?{'background-color': 'black','color':'white'} : {
+                    'background-color': 'white','color':'black'
+                }">חיפוש לפי איזור</button>
+        </div>
+        <div class="item">
+            <button class="buttonV2 choosingButton" (click)="iKnowMyBarber()" [ngStyle]="iKnowMyBarberFlag?{'background-color': 'black','color':'white'} : {
+                    'background-color': 'white','color':'black'
+                }">אני מכיר את הספר שלי</button>
+        </div>
+    </div>
+    <div *ngIf="iKnowMyBarberFlag">
+        <form class="generic-form" [formGroup]="formGroup" (ngSubmit)=SubmitByName()>
             <div class="input">
                 <!-- <input formControlName="barberName"
             placeholder=text> -->
@@ -23,3 +36,40 @@
             </div>
         </form>
     </div>
+
+    <div *ngIf="searchByLocationFlag">
+        <form class="generic-form" style="display: flex;margin-right: 4%;" [formGroup]="formGroup" (ngSubmit)=LocationSearch()>
+            <mat-form-field appearance="fill">
+                <mat-label>בחר איזור</mat-label>
+                <mat-select [formControl]="locationsSearch" multiple>
+                    <input (keyup)="onKey($event.target)" placeholder="חיפוש">
+                    <mat-option *ngFor="let location of selectedLocations" [value]="location">{{location}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="locationsSearch.hasError('required')">נא לבחור מיקום</mat-error>
+            </mat-form-field>
+            <!-- <mat-form-field appearance="fill">
+                <mat-label>Toppings</mat-label>
+                <mat-select [formControl]="toppings" multiple>
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                </mat-select>
+              </mat-form-field> -->
+            <div class="buttonV2 setAppointment">
+                <button class="buttonV2 blackWhite" type="submit" [disabled]=!formGroup.valid>
+                    <span>
+                        חפש
+                    </span>
+                </button>
+            </div>
+        </form>
+        <div *ngIf="searchResults">
+            <p style="margin-right: 10%;">תוצאות חיפוש</p>
+            <div *ngFor="let barber of searchResults" class="barberCard">
+                <div>
+                    {{barber.name}}&nbsp;&nbsp;{{barber.familyName}}
+                </div>
+                <p>{{barber.phoneNumber}}</p>
+            </div>
+        </div>
+    </div>
+</div>
