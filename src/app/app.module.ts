@@ -32,6 +32,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { QuickSummaryComponent } from 'src/quick-summary/quick-summary.component';
+import { CustomerBlockComponent } from 'src/customer-block/customer-block.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { QuickSummaryComponent } from 'src/quick-summary/quick-summary.component
     CustomerTableCardComponent,
     SetMyOrderComponent,
     GuestNavigationBarComponent,
-    QuickSummaryComponent
+    QuickSummaryComponent,
+    CustomerBlockComponent
   ],
   imports: [
     BrowserModule,

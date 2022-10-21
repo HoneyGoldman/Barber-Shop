@@ -1,1 +1,52 @@
-<p>quick-summary works!</p>
+<div>
+    <div class="imageContainer">
+        <img class="center" src="../assets/fast act.png">
+    </div>
+
+    <div class="grid" dir="rtl">
+        <div class="item">
+            <img class="center" src="../assets/setAppointment Round.png">
+            <div>
+                קבע תור
+            </div>
+            
+        </div>
+        <div class="item">
+            <img class="center" src="../assets/newCustomerRound.png">
+            <div>
+               לקוח חדש
+            </div>
+        </div>
+        <div class="item"> <img class="center" src="../assets/numbers.png">
+            <div>
+              מספרים
+            </div>
+        </div>
+    </div>
+
+    <div class="imageContainer">
+        <img class="center" src="../assets/orders.png">
+    </div>
+    <div dir="rtl" class="customerDetails">
+        <ul>
+            <li>
+                <div style="font-weight:bold;">
+                    כעת מסתפר:&nbsp;
+                    <app-customer-block [customer]="currentCustomer"></app-customer-block>
+                </div>
+            </li>
+            <li>
+                <hr>
+            </li>
+            <li>
+                <div>
+                   הבא בתור:&nbsp;&nbsp;&nbsp;
+                   <app-customer-block [customer]="nextCustomer"></app-customer-block>
+                </div>
+            </li>
+            <li style="border-top: 1px dashed black">
+                
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.center {
+    max-height: 50px;
+    width: auto;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    padding: 10px;
+
+}
+
+.item {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 15px;
+}
+
+
+@media (max-width: 992px) {
+    .grid {
+        grid-gap: 5px;
+        padding: 5px;
+    }
+}
+
+/* @media (max-width: 992px) {
+      .grid {  grid-template-columns: auto;}
+  }  */
+
+  ul{
+    list-style: none;
+  }
+
+  ul li div{
+    display: flex;
+  }
+
+  .customerDetails{
+    margin-top: 15px;
+    font-size: larger;
+  }
