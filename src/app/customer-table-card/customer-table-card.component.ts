@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Appointment } from 'src/Model/Appointment';
 import { DataServiceComponent } from '../data-service/data-service.component';
 import { GenericPopUpComponent } from '../generic-pop-up/generic-pop-up.component';
+import { SetAppointmentFormComponent } from '../set-appointment-form/set-appointment-form.component';
 import { SetAppointmentComponent } from '../set-appointment/set-appointment.component';
 import { SwapAppointmentComponent } from '../swap-appointment/swap-appointment.component';
 
@@ -115,7 +116,7 @@ export class CustomerTableCardComponent implements OnInit {
   }
 
   openSetAppointmentDialog(appointment: Appointment) {
-    const dialogRef = this.dialog.open(SetAppointmentComponent, {
+    const dialogRef = this.dialog.open(SetAppointmentFormComponent, {
       width: '250px',
       data: { text: appointment.startTime, header: '', noText: 'לא', yesText: 'בטל' },
     });

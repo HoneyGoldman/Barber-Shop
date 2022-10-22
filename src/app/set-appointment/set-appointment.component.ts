@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./set-appointment.component.css']
 })
 export class SetAppointmentComponent implements OnInit {
-
+  isRealoading:boolean=true;
+  today:Date=new Date();
   constructor() { }
 
   ngOnInit(): void {
+    this.isRealoading=false;
   }
 
 }

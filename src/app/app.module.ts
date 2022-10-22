@@ -37,6 +37,7 @@ import { CustomerEditorComponent } from 'src/customer-editor/customer-editor.com
 import {MatIconModule} from '@angular/material/icon';
 import { Customer } from 'src/Model/Customer';
 import {MatSelectModule} from '@angular/material/select';
+import { SetAppointmentFormComponent } from './set-appointment-form/set-appointment-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +61,8 @@ import {MatSelectModule} from '@angular/material/select';
     GuestNavigationBarComponent,
     QuickSummaryComponent,
     CustomerBlockComponent,
-    CustomerEditorComponent
+    CustomerEditorComponent,
+    SetAppointmentFormComponent
   ],
   imports: [
     BrowserModule,
