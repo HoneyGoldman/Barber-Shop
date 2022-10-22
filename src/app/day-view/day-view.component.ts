@@ -60,7 +60,7 @@ export class DayViewComponent implements OnInit {
 
 
   setDateSTR(date: Date) {
-    this.dateSTR = this.localDate?.getUTCDate()! + "." + this.localDate?.getMonth()!
+    this.dateSTR = this.localDate?.getUTCDate()! + "." + (this.localDate?.getMonth()!+1)
     let dynamicDay:string='day'+(1+this.date!.getDay());
     let obj:any=this;
     this.dayText=obj[dynamicDay];
