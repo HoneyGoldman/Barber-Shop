@@ -121,4 +121,9 @@ export class DataServiceComponent implements OnInit {
     return this.http.get<Admin[]>(url);
   }
 
+  setAppointment(appointment:Appointment):Observable<boolean>{
+    const url = this.baseURL + '/Calendar/setAppointmen';
+    return this.http.put<boolean>(url,appointment);
+  }
+
 }
