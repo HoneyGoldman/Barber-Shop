@@ -46,8 +46,6 @@ export class QuickSummaryComponent implements OnInit,OnDestroy {
     
   }
 
-  
-
   openCustomerEditorDialog(){
     const dialogRef = this.dialog.open(CustomerEditorComponent);
     dialogRef.afterClosed().subscribe(result => {
@@ -55,18 +53,4 @@ export class QuickSummaryComponent implements OnInit,OnDestroy {
      
     });
   }
-
-
-  formatDate(date: Date) {
-    return [
-      this.padTo2Digits(date.getDate()),
-      this.padTo2Digits(date.getMonth() + 1),
-      date.getFullYear(),
-    ].join('-');
-  }
-
-  padTo2Digits(num: number) {
-    return num.toString().padStart(2, '0');
-  }
-  
 }
