@@ -1,25 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DataServiceComponent } from 'src/app/data-service/data-service.component';
 import { CustomerEditorComponent } from 'src/customer-editor/customer-editor.component';
+import { Appointment } from 'src/Model/Appointment';
 import { Customer } from 'src/Model/Customer';
+import { Day } from 'src/Model/Day';
 
 @Component({
   selector: 'app-quick-summary',
   templateUrl: './quick-summary.component.html',
   styleUrls: ['./quick-summary.component.css']
 })
-export class QuickSummaryComponent implements OnInit {
+export class QuickSummaryComponent implements OnInit,OnDestroy {
   currentCustomer:Customer=new Customer();
   nextCustomer:Customer=new Customer();
-  constructor(public dialog: MatDialog) { }
+  id:any ;
+  constructor(public dialog: MatDialog,private data:DataServiceComponent) { }
 
   ngOnInit(): void {
-    this.currentCustomer.name='חוני גולדמן'
-    this.currentCustomer.phoneNumber='055-6671210'
-    this.nextCustomer.name='דניאל דהן'
-    this.nextCustomer.phoneNumber='055-643210'
+    this.id = setInterval(() => {
+      this.checkCurrentAppointment(); 
+    },30*1000);
   }
 
+  ngOnDestroy() {
+    if (this.id) {
+      clearInterval(this.id);
+    }
+  }
+
+  checkCurrentAppointment(){
+    let date=new Date();
+    this.data.getCurrentTowCustomers(date.getDay(),date.getMonth()+1,date.getFullYear()).subscribe(res=>{
+      if(res[0].customer!.name==='dummy'){
+        res[0].customer!.name='תור פנוי'
+        res[0].customer!.phoneNumber='--'
+      }
+      if(res[1].customer!.name==='dummy'){
+        res[1].customer!.name='תור פנוי'
+        res[1].customer!.phoneNumber='--'
+      }
+      this.currentCustomer=res[0].customer!;
+      this.nextCustomer=res[1].customer!;
+    })
+    
+  }
+
+  
 
   openCustomerEditorDialog(){
     const dialogRef = this.dialog.open(CustomerEditorComponent);
@@ -28,4 +55,18 @@ export class QuickSummaryComponent implements OnInit {
      
     });
   }
+
+
+  formatDate(date: Date) {
+    return [
+      this.padTo2Digits(date.getDate()),
+      this.padTo2Digits(date.getMonth() + 1),
+      date.getFullYear(),
+    ].join('-');
+  }
+
+  padTo2Digits(num: number) {
+    return num.toString().padStart(2, '0');
+  }
+  
 }
