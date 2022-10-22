@@ -10,4 +10,32 @@
             קביעת תור
         </h1>
     </div>
+    <div class="grid" dir="rtl">
+        <div class="item" (click)="openCustomerEditorDialog()">
+            <img class="center" src="../assets/newCustomerRound.png">
+            <div>
+                לקוח חדש
+            </div>
+        </div>
+        <div class="item">
+            <form class="generic-form" [formGroup]="formGroup" (ngSubmit)=SubmitByName($event.target.value)>
+                <div class="input">
+                    <input type="text" placeholder="שם לקוח" aria-label="Number" matInput [formControl]="myControl"
+                        [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let name of filteredOptions | async" [value]="name">
+                            {{name}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </div>
+                <div class="buttonV2 setAppointment">
+                    <button class="buttonV2 blackWhite" type="submit" [disabled]=!formGroup.valid>
+                        <span>
+                            קבע תור
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

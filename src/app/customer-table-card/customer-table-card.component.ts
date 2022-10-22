@@ -117,13 +117,13 @@ export class CustomerTableCardComponent implements OnInit {
 
   openSetAppointmentDialog(appointment: Appointment) {
     const dialogRef = this.dialog.open(SetAppointmentFormComponent, {
-      width: '250px',
-      data: { text: appointment.startTime, header: '', noText: 'לא', yesText: 'בטל' },
+      data: appointment
     });
 
     dialogRef.afterClosed().subscribe(result => {
       // console.log('The dialog was closed '+result);
       this.confirmDelete = result;
+      this.ngOnInit()
     });
   }
 
@@ -159,9 +159,10 @@ export class CustomerTableCardComponent implements OnInit {
     }
   }
 
-  getDialLink(phoneNumber:string|undefined){
-    if(phoneNumber!==undefined){
-    return 'tel:'+phoneNumber;}
+  getDialLink(phoneNumber: string | undefined) {
+    if (phoneNumber !== undefined) {
+      return 'tel:' + phoneNumber;
+    }
     else {
       return 'no link'
     }

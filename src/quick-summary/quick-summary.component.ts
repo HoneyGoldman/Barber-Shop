@@ -33,11 +33,11 @@ export class QuickSummaryComponent implements OnInit,OnDestroy {
   checkCurrentAppointment(){
     let date=new Date();
     this.data.getCurrentTowCustomers(date.getDay(),date.getMonth()+1,date.getFullYear()).subscribe(res=>{
-      if(res[0].customer!.name==='dummy'){
+      if(res[0].customer===null || res[0].customer!.name==='dummy'){
         res[0].customer!.name='תור פנוי'
         res[0].customer!.phoneNumber='--'
       }
-      if(res[1].customer!.name==='dummy'){
+      if(res[1].customer===null || res[1].customer!.name==='dummy'){
         res[1].customer!.name='תור פנוי'
         res[1].customer!.phoneNumber='--'
       }

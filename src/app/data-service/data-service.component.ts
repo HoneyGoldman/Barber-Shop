@@ -98,11 +98,19 @@ export class DataServiceComponent implements OnInit {
   }
 
   getAllBarbers(): Observable<Admin[]> {
-    const url = this.baseURL + '/Admin/getAll/';
+    const url = this.baseURL + '/Admin/getAll';
     if (this.siteId === null || this, this.siteId === undefined) {
       console.log("Data service: No SITE ID !!")
     }
     return this.http.get<Admin[]>(url);
+  }
+
+  getAllCustomers(): Observable<Customer[]> {
+    const url = this.baseURL + '/Customer/getAll?siteId='+this.siteId;
+    if (this.siteId === null || this, this.siteId === undefined) {
+      console.log("Data service: No SITE ID !!")
+    }
+    return this.http.get<Customer[]>(url);
   }
 
   saveCustomer(customer:Customer){
@@ -122,8 +130,9 @@ export class DataServiceComponent implements OnInit {
   }
 
   setAppointment(appointment:Appointment):Observable<boolean>{
-    const url = this.baseURL + '/Calendar/setAppointmen';
+    const url = this.baseURL + '/Calendar/setAppointmen?siteId='+this.siteId;
     return this.http.put<boolean>(url,appointment);
   }
+
 
 }
